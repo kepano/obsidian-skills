@@ -1,13 +1,66 @@
-Claude Skills for use with Obsidian.
+# Obsidian Skills for Claude Code
+
+Claude Code skills for creating and editing Obsidian vault files.
+
+## Skills Included
+
+| Skill | Description | File Types |
+|-------|-------------|------------|
+| [obsidian-markdown](./skills/obsidian-markdown/) | Obsidian Flavored Markdown with wikilinks, embeds, callouts, and properties | `.md` |
+| [obsidian-bases](./skills/obsidian-bases/) | Database-like views with filters, formulas, and summaries | `.base` |
+| [json-canvas](./skills/json-canvas/) | Infinite canvas with nodes, edges, and groups | `.canvas` |
 
 ## Installation
 
-Add the contents of this repo to a `/.claude` folder in the root of your Obsidian vault (or whichever folder you're using with Claude Code). See more in the [official Claude Skills documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+### As a Claude Code Plugin (Recommended)
 
-## Skills
+Install directly from the Obsidian marketplace:
 
-### Create and edit Obsidian-compatible plain text files
+```bash
+claude plugin add obsidian@kepano
+claude plugin install obsidian@kepano
+```
 
-- [Obsidian Flavored Markdown](https://help.obsidian.md/obsidian-flavored-markdown) `.md`
-- [Obsidian Bases](https://help.obsidian.md/bases/syntax) `.base`
-- [JSON Canvas](https://jsoncanvas.org/) `.canvas`
+### Manual Installation
+
+Clone or copy this repository into your project's `.claude/plugins/` directory:
+
+```bash
+# Option 1: Clone into plugins directory
+mkdir -p .claude/plugins
+git clone https://github.com/obsidianmd/obsidian-skills.git .claude/plugins/obsidian
+
+# Option 2: Add as git submodule
+git submodule add https://github.com/obsidianmd/obsidian-skills.git .claude/plugins/obsidian
+```
+
+### Legacy Installation (Skills Only)
+
+Copy the `skills/` directory contents into your `.claude/skills/` folder:
+
+```bash
+cp -r skills/* .claude/skills/
+```
+
+## Usage
+
+Once installed, Claude Code will automatically use these skills when working with Obsidian files. The skills provide:
+
+- **Syntax guidance** for Obsidian-specific features (wikilinks, callouts, embeds)
+- **Schema documentation** for `.base` and `.canvas` file formats
+- **Best practices** for structuring notes and databases
+- **Complete function references** for Bases formulas
+
+## Documentation
+
+- [Obsidian Flavored Markdown](https://help.obsidian.md/obsidian-flavored-markdown)
+- [Obsidian Bases](https://help.obsidian.md/bases)
+- [JSON Canvas Spec](https://jsoncanvas.org/)
+
+## Contributing
+
+Contributions welcome! Please open an issue or pull request.
+
+## License
+
+MIT License - see [LICENSE](./LICENSE)

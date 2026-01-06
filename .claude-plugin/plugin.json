@@ -1,0 +1,19 @@
+{
+  "name": "obsidian",
+  "version": "1.0.0",
+  "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas. Use when working with .md, .base, or .canvas files in an Obsidian vault.",
+  "author": {
+    "name": "Obsidian",
+    "url": "https://obsidian.md"
+  },
+  "repository": "https://github.com/obsidianmd/obsidian-skills",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "markdown",
+    "bases",
+    "canvas",
+    "pkm",
+    "notes"
+  ]
+}
