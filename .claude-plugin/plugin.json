@@ -1,0 +1,8 @@
+{
+  "name": "obsidian-skills",
+  "version": "1.0.0",
+  "description": "Claude Code skills for working with Obsidian file formats",
+  "author": { "name": "Steph Ango" },
+  "repository": "https://github.com/kepano/obsidian-skills",
+  "license": "MIT"
+}
