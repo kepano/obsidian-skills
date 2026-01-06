@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "obsidian-skills",
+  "owner": {
+    "name": "Steph Ango"
+  },
+  "metadata": {
+    "description": "Claude Code skills for working with Obsidian file formats",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "obsidian-skills",
+      "description": "Skills for creating and editing Obsidian-compatible files: Markdown, Bases, and JSON Canvas",
+      "source": "./",
+      "skills": [
+        "./skills/obsidian-markdown",
+        "./skills/obsidian-bases",
+        "./skills/json-canvas"
+      ]
+    }
+  ]
+}
