@@ -17,7 +17,7 @@ Claude Code skills for creating and editing Obsidian vault files.
 Run the following commands in a Claude Code session:
 
 ```
-/plugin marketplace add obsidianmd/obsidian-skills
+/plugin marketplace add kepano/obsidian-skills
 /plugin install obsidian@obsidian-skills
 ```
 
@@ -28,10 +28,10 @@ Clone or copy this repository into your project's `.claude/plugins/` directory:
 ```bash
 # Option 1: Clone into plugins directory
 mkdir -p .claude/plugins
-git clone https://github.com/obsidianmd/obsidian-skills.git .claude/plugins/obsidian
+git clone https://github.com/kepano/obsidian-skills.git .claude/plugins/obsidian
 
 # Option 2: Add as git submodule
-git submodule add https://github.com/obsidianmd/obsidian-skills.git .claude/plugins/obsidian
+git submodule add https://github.com/kepano/obsidian-skills.git .claude/plugins/obsidian
 ```
 
 ## Usage
