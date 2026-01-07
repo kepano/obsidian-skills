@@ -1,12 +1,18 @@
 ---
-name: obsidian-markdown
-version: "1.0.0"
+name: CreatingObsidianMarkdown
 description: Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes.
 ---
 
 # Obsidian Flavored Markdown Skill
 
-This skill enables Claude Code to create and edit valid Obsidian Flavored Markdown, including all Obsidian-specific syntax extensions.
+Create and edit valid Obsidian Flavored Markdown, including all Obsidian-specific syntax extensions.
+
+## Quick Reference
+
+| Topic | Description |
+|-------|-------------|
+| [Advanced Syntax](./advanced-syntax.md) | Math (LaTeX), Mermaid diagrams, footnotes, HTML |
+| [Examples](./examples.md) | Complete working example with all features |
 
 ## Overview
 
@@ -25,7 +31,7 @@ This is a paragraph.
 
 This is another paragraph (blank line between creates separate paragraphs).
 
-For a line break within a paragraph, add two spaces at the end  
+For a line break within a paragraph, add two spaces at the end
 or use Shift+Enter.
 ```
 
@@ -359,107 +365,6 @@ Escape pipes with backslash:
 | [[Link\|Display]] | ![[Image\|100]] |
 ```
 
-## Math (LaTeX)
-
-### Inline Math
-
-```markdown
-This is inline math: $e^{i\pi} + 1 = 0$
-```
-
-### Block Math
-
-```markdown
-$$
-\begin{vmatrix}
-a & b \\
-c & d
-\end{vmatrix} = ad - bc
-$$
-```
-
-### Common Math Syntax
-
-```markdown
-$x^2$              Superscript
-$x_i$              Subscript
-$\frac{a}{b}$      Fraction
-$\sqrt{x}$         Square root
-$\sum_{i=1}^{n}$   Summation
-$\int_a^b$         Integral
-$\alpha, \beta$    Greek letters
-```
-
-## Diagrams (Mermaid)
-
-````markdown
-```mermaid
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Do this]
-    B -->|No| D[Do that]
-    C --> E[End]
-    D --> E
-```
-````
-
-### Sequence Diagrams
-
-````markdown
-```mermaid
-sequenceDiagram
-    Alice->>Bob: Hello Bob
-    Bob-->>Alice: Hi Alice
-```
-````
-
-### Linking in Diagrams
-
-````markdown
-```mermaid
-graph TD
-    A[Biology]
-    B[Chemistry]
-    A --> B
-    class A,B internal-link;
-```
-````
-
-## Footnotes
-
-```markdown
-This sentence has a footnote[^1].
-
-[^1]: This is the footnote content.
-
-You can also use named footnotes[^note].
-
-[^note]: Named footnotes still appear as numbers.
-
-Inline footnotes are also supported.^[This is an inline footnote.]
-```
-
-## Comments
-
-```markdown
-This is visible %%but this is hidden%% text.
-
-%%
-This entire block is hidden.
-It won't appear in reading view.
-%%
-```
-
-## Horizontal Rules
-
-```markdown
----
-***
-___
-- - -
-* * *
-```
-
 ## Properties (Frontmatter)
 
 Properties use YAML frontmatter at the start of a note:
@@ -524,92 +429,6 @@ Tags can contain:
 - Hyphens `-`
 - Forward slashes `/` (for nesting)
 
-## HTML Content
-
-Obsidian supports HTML within Markdown:
-
-```markdown
-<div class="custom-container">
-  <span style="color: red;">Colored text</span>
-</div>
-
-<details>
-  <summary>Click to expand</summary>
-  Hidden content here.
-</details>
-
-<kbd>Ctrl</kbd> + <kbd>C</kbd>
-```
-
-## Complete Example
-
-````markdown
----
-title: Project Alpha
-date: 2024-01-15
-tags:
-  - project
-  - active
-status: in-progress
-priority: high
----
-
-# Project Alpha
-
-## Overview
-
-This project aims to [[improve workflow]] using modern techniques.
-
-> [!important] Key Deadline
-> The first milestone is due on ==January 30th==.
-
-## Tasks
-
-- [x] Initial planning
-- [x] Resource allocation
-- [ ] Development phase
-  - [ ] Backend implementation
-  - [ ] Frontend design
-- [ ] Testing
-- [ ] Deployment
-
-## Technical Notes
-
-The main algorithm uses the formula $O(n \log n)$ for sorting.
-
-```python
-def process_data(items):
-    return sorted(items, key=lambda x: x.priority)
-```
-
-## Architecture
-
-```mermaid
-graph LR
-    A[Input] --> B[Process]
-    B --> C[Output]
-    B --> D[Cache]
-```
-
-## Related Documents
-
-- ![[Meeting Notes 2024-01-10#Decisions]]
-- [[Budget Allocation|Budget]]
-- [[Team Members]]
-
-## References
-
-For more details, see the official documentation[^1].
-
-[^1]: https://example.com/docs
-
-%%
-Internal notes:
-- Review with team on Friday
-- Consider alternative approaches
-%%
-````
-
 ## References
 
 - [Basic formatting syntax](https://help.obsidian.md/syntax)
@@ -619,4 +438,3 @@ Internal notes:
 - [Embed files](https://help.obsidian.md/embeds)
 - [Callouts](https://help.obsidian.md/callouts)
 - [Properties](https://help.obsidian.md/properties)
-
