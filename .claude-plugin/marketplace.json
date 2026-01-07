@@ -8,7 +8,7 @@
     {
       "name": "obsidian",
       "source": "./",
-      "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas.",
+      "description": "Claude Skills for Obsidian",
       "version": "1.0.0"
     }
   ]
