@@ -1,0 +1,15 @@
+{
+  "name": "obsidian-skills",
+  "owner": {
+    "name": "Obsidian",
+    "url": "https://obsidian.md"
+  },
+  "plugins": [
+    {
+      "name": "obsidian",
+      "source": ".",
+      "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas.",
+      "version": "1.0.0"
+    }
+  ]
+}

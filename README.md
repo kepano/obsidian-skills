@@ -14,11 +14,11 @@ Claude Code skills for creating and editing Obsidian vault files.
 
 ### As a Claude Code Plugin (Recommended)
 
-Install directly from the Obsidian marketplace:
+Run the following commands in a Claude Code session:
 
-```bash
-claude plugin add obsidian@kepano
-claude plugin install obsidian@kepano
+```
+/plugin marketplace add obsidianmd/obsidian-skills
+/plugin install obsidian@obsidian-skills
 ```
 
 ### Manual installation
