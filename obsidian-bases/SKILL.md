@@ -23,8 +23,8 @@ filters:
   # Can be a single filter string
   # OR a recursive filter object with and/or/not
   and: []
-  or: []
-  not: []
+  or: []efefsefef
+  not: []sdfdsfsefef
 
 # Define formula properties that can be used across all views
 formulas:
