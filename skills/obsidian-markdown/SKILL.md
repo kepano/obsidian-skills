@@ -5,7 +5,7 @@ description: Create and edit Obsidian Flavored Markdown with wikilinks, embeds, 
 
 # Obsidian Flavored Markdown Skill
 
-This skill enables Claude Code to create and edit valid Obsidian Flavored Markdown, including all Obsidian-specific syntax extensions.
+This skill enables skills-compatible agents to create and edit valid Obsidian Flavored Markdown, including all Obsidian-specific syntax extensions.
 
 ## Overview
 
@@ -618,4 +618,3 @@ Internal notes:
 - [Embed files](https://help.obsidian.md/embeds)
 - [Callouts](https://help.obsidian.md/callouts)
 - [Properties](https://help.obsidian.md/properties)
-
