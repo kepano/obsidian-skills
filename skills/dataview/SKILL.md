@@ -248,16 +248,16 @@ LIMIT 5
 | `truncate(str, len, suffix)` | Truncate with suffix |
 | `padleft(str, len, char)` | Pad left |
 | `padright(str, len, char)` | Pad right |
-| `trim(str)` | Trim whitespace |
 
 ### Numeric Functions
 
 | Function | Description |
 |----------|-------------|
+| `number(string)` | Extract first number from string |
 | `round(num, digits)` | Round number |
+| `trunc(num)` | Remove decimal point |
 | `floor(num)` | Round down |
 | `ceil(num)` | Round up |
-| `abs(num)` | Absolute value |
 | `min(a, b, ...)` | Minimum value |
 | `max(a, b, ...)` | Maximum value |
 | `sum(array)` | Sum of array |

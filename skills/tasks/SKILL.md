@@ -42,6 +42,7 @@ A task can include multiple components in any order:
 | ✅ | Done date | `✅ YYYY-MM-DD` |
 | ❌ | Cancelled date | `❌ YYYY-MM-DD` |
 | 🔁 | Recurrence | `🔁 every ...` |
+| 🔺 | Highest priority | `🔺` |
 | ⏫ | High priority | `⏫` |
 | 🔼 | Medium priority | `🔼` |
 | 🔽 | Low priority | `🔽` |
@@ -61,6 +62,7 @@ Instead of emojis, you can use text:
 | ➕ | `[created:: YYYY-MM-DD]` |
 | ✅ | `[completion:: YYYY-MM-DD]` |
 | ❌ | `[cancelled:: YYYY-MM-DD]` |
+| 🔺 | `[priority:: highest]` |
 | ⏫ | `[priority:: high]` |
 | 🔼 | `[priority:: medium]` |
 | 🔽 | `[priority:: low]` |
@@ -103,14 +105,14 @@ Dates must be in `YYYY-MM-DD` format.
 
 ### Priority Levels
 
-| Priority | Emoji | Value |
-|----------|-------|-------|
-| Highest | ⏫ | 1 |
-| High | 🔺 | 2 |
-| Medium | 🔼 | 3 |
-| None | (none) | 4 |
-| Low | 🔽 | 5 |
-| Lowest | ⏬ | 6 |
+| Priority | Emoji |
+|----------|-------|
+| Highest | 🔺 |
+| High | ⏫ |
+| Medium | 🔼 |
+| None | (none) |
+| Low | 🔽 |
+| Lowest | ⏬ |
 
 ### Examples
 
@@ -139,7 +141,7 @@ Dates must be in `YYYY-MM-DD` format.
 | `day` | `daily` |
 | `week` | `weekly` |
 | `month` | `monthly` |
-| `year` | `yearly`, `annually` |
+| `year` | `yearly` |
 
 ### Recurrence Examples
 
@@ -238,12 +240,15 @@ Tasks with dependencies are blocked until dependencies are completed.
 
 ### Query Block Structure
 
+Query blocks can contain filters, sort, group, and display options in any order:
+
 ````markdown
 ```tasks
-<filters>
-<sort>
-<group>
-<display options>
+not done
+due before tomorrow
+sort by priority
+group by due
+hide backlink
 ```
 ````
 
