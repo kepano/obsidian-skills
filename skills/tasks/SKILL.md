@@ -49,6 +49,7 @@ A task can include multiple components in any order:
 | ⏬ | Lowest priority | `⏬` |
 | 🆔 | ID | `🆔 abc123` |
 | ⛔ | Depends on | `⛔ abc123` |
+| 🏁 | On completion | `🏁 keep` or `🏁 delete` |
 
 ### Alternative Text Formats
 
@@ -74,9 +75,9 @@ Instead of emojis, you can use text:
 
 ```markdown
 📅 2024-02-15
-📅 2024-02-15
 ⏳ 2024-02-10
 🛫 2024-02-01
+➕ 2024-02-01
 ```
 
 Dates must be in `YYYY-MM-DD` format.
@@ -117,10 +118,11 @@ Dates must be in `YYYY-MM-DD` format.
 ### Examples
 
 ```markdown
-- [ ] Critical bug fix ⏫
-- [ ] Important feature 🔼
-- [ ] Nice to have 🔽
-- [ ] Someday maybe ⏬
+- [ ] Critical bug fix 🔺
+- [ ] High priority task ⏫
+- [ ] Medium priority 🔼
+- [ ] Low priority 🔽
+- [ ] Lowest priority ⏬
 ```
 
 ## Recurrence
@@ -199,6 +201,18 @@ When completed, next due = completion date + 1 week
 
 Tasks with dependencies are blocked until dependencies are completed.
 
+## On Completion
+
+Control what happens when a task is completed:
+
+```markdown
+- [ ] Keep this task when done 🏁 keep
+- [ ] Delete this task when done 🏁 delete
+- [ ] Delete completed recurring instance 🔁 every day 🏁 delete
+```
+
+Default behavior keeps the completed task. Use `🏁 delete` to remove it.
+
 ## Custom Statuses
 
 ### Default Statuses
@@ -208,7 +222,9 @@ Tasks with dependencies are blocked until dependencies are completed.
 | Todo | `[ ]` | `TODO` |
 | Done | `[x]` | `DONE` |
 
-### Common Custom Statuses
+### Custom Statuses (Require Configuration)
+
+Custom statuses must be configured in Tasks settings before use. Common examples:
 
 | Status | Character | Type | Meaning |
 |--------|-----------|------|---------|
@@ -217,23 +233,14 @@ Tasks with dependencies are blocked until dependencies are completed.
 | Forwarded | `[>]` | `TODO` | Moved to later |
 | Scheduled | `[<]` | `TODO` | Scheduled |
 | Question | `[?]` | `TODO` | Need info |
-| Important | `[!]` | `TODO` | High priority |
-| Star | `[*]` | `TODO` | Favorite |
-| Quote | `["]` | `TODO` | Quote |
-| Info | `[i]` | `TODO` | Information |
-| Idea | `[I]` | `TODO` | Idea/lightbulb |
-| Pro | `[p]` | `TODO` | Pro argument |
-| Con | `[c]` | `TODO` | Con argument |
 
 ### Examples
 
 ```markdown
-- [ ] Not started
-- [/] In progress
-- [x] Completed
-- [-] Cancelled
-- [>] Deferred
-- [?] Waiting for info
+- [ ] Not started (default)
+- [x] Completed (default)
+- [/] In progress (requires configuration)
+- [-] Cancelled (requires configuration)
 ```
 
 ## Task Queries
@@ -327,10 +334,19 @@ due last month
 
 due this year
 
-# Relative with numbers
 due in 7 days
 due in 2 weeks
 due in 3 months
+```
+
+#### Happens Filter
+
+Matches tasks with any date type (due, scheduled, or start):
+
+```
+happens today
+happens before tomorrow
+happens this week
 ```
 
 #### Text Filters
@@ -754,29 +770,31 @@ limit 10
 
 ### Daily Note Task Section
 
-```markdown
+Note: Use with Templater or Daily Notes plugin to insert actual dates.
+
+````markdown
 ## Today's Tasks
 
 ### Scheduled for Today
 ```tasks
-scheduled on {{date:YYYY-MM-DD}}
+scheduled today
 not done
 sort by priority reverse
 ```
 
 ### Due Today
 ```tasks
-due on {{date:YYYY-MM-DD}}
+due today
 not done
 sort by priority reverse
 ```
 
 ### Completed Today
 ```tasks
-done on {{date:YYYY-MM-DD}}
+done today
 short mode
 ```
-```
+````
 
 ### Project Task List
 
@@ -817,9 +835,20 @@ Tasks are automatically scored for urgency based on:
 - Scheduled date
 - Start date
 
+Urgency scoring can be customized in Tasks settings.
+
 View with: `show urgency`
 
 Sort with: `sort by urgency reverse`
+
+## Custom Filters and Groups
+
+For complex logic, use JavaScript functions:
+
+```
+filter by function task.due.moment?.isSameOrBefore(moment(), 'day') || false
+group by function task.due.moment?.format("YYYY-MM") ?? "No date"
+```
 
 ## References
 
