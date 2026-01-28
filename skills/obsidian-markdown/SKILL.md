@@ -494,6 +494,23 @@ due: 2024-02-01T14:30:00
 | List | `tags: [one, two]` or YAML list |
 | Links | `related: "[[Other Note]]"` |
 
+### Lists of Wikilinks
+
+When defining list properties that contain multiple wikilinks in frontmatter, use the multi-line YAML array syntax. This is the format Obsidian generates by default when adding multiple values via the Properties UI.
+
+```yaml
+---
+related_to:
+  - "[[Note 1]]"
+  - "[[Note 2]]"
+  - "[[Note 3]]"
+---
+```
+
+Wikilinks **must be wrapped in quotation marks** to ensure valid YAML parsing.
+
+While inline arrays such as `related_to: ["[[Note 1]]", "[[Note 2]]"]` are valid YAML, they are **not the format Obsidian uses or expects** when managing properties through its interface.
+
 ### Default Properties
 
 - `tags` - Note tags
