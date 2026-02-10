@@ -23,8 +23,10 @@ Copy the `skills/` directory into your Codex skills path (typically `~/.codex/sk
 
 ## Skills
 
-### Create and edit Obsidian-compatible plain text files
-
-- [Obsidian Flavored Markdown](https://help.obsidian.md/obsidian-flavored-markdown) `.md`
-- [Obsidian Bases](https://help.obsidian.md/bases/syntax) `.base`
-- [JSON Canvas](https://jsoncanvas.org/) `.canvas`
+| Skill | Description |
+|-------|-------------|
+| [obsidian-markdown](skills/obsidian-markdown) | Create and edit [Obsidian Flavored Markdown](https://help.obsidian.md/obsidian-flavored-markdown) (`.md`) with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax |
+| [obsidian-bases](skills/obsidian-bases) | Create and edit [Obsidian Bases](https://help.obsidian.md/bases/syntax) (`.base`) with views, filters, formulas, and summaries |
+| [json-canvas](skills/json-canvas) | Create and edit [JSON Canvas](https://jsoncanvas.org/) files (`.canvas`) with nodes, edges, groups, and connections |
+| [obsidian-cli](skills/obsidian-cli) | Interact with Obsidian vaults via the [Obsidian CLI](https://help.obsidian.md/cli) including plugin and theme development |
+| [defuddle](skills/defuddle) | Extract clean markdown from web pages using [Defuddle](https://github.com/kepano/defuddle-cli), removing clutter to save tokens |
