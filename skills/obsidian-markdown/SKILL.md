@@ -41,14 +41,14 @@ or use Shift+Enter.
 
 ### Text Formatting
 
-| Style | Syntax | Example | Output |
-|-------|--------|---------|--------|
-| Bold | `**text**` or `__text__` | `**Bold**` | **Bold** |
-| Italic | `*text*` or `_text_` | `*Italic*` | *Italic* |
-| Bold + Italic | `***text***` | `***Both***` | ***Both*** |
-| Strikethrough | `~~text~~` | `~~Striked~~` | ~~Striked~~ |
-| Highlight | `==text==` | `==Highlighted==` | ==Highlighted== |
-| Inline code | `` `code` `` | `` `code` `` | `code` |
+| Style         | Syntax                   | Example           | Output          |
+| ------------- | ------------------------ | ----------------- | --------------- |
+| Bold          | `**text**` or `__text__` | `**Bold**`        | **Bold**        |
+| Italic        | `*text*` or `_text_`     | `*Italic*`        | *Italic*        |
+| Bold + Italic | `***text***`             | `***Both***`      | ***Both***      |
+| Strikethrough | `~~text~~`               | `~~Striked~~`     | ~~Striked~~     |
+| Highlight     | `==text==`               | `==Highlighted==` | ==Highlighted== |
+| Inline code   | `` `code` ``             | `` `code` ``      | `code`          |
 
 ### Escaping Formatting
 
@@ -215,21 +215,21 @@ tag:#project status:done
 
 ### Supported Callout Types
 
-| Type | Aliases | Description |
-|------|---------|-------------|
-| `note` | - | Blue, pencil icon |
-| `abstract` | `summary`, `tldr` | Teal, clipboard icon |
-| `info` | - | Blue, info icon |
-| `todo` | - | Blue, checkbox icon |
-| `tip` | `hint`, `important` | Cyan, flame icon |
-| `success` | `check`, `done` | Green, checkmark icon |
-| `question` | `help`, `faq` | Yellow, question mark |
-| `warning` | `caution`, `attention` | Orange, warning icon |
-| `failure` | `fail`, `missing` | Red, X icon |
-| `danger` | `error` | Red, zap icon |
-| `bug` | - | Red, bug icon |
-| `example` | - | Purple, list icon |
-| `quote` | `cite` | Gray, quote icon |
+| Type       | Aliases                | Description           |
+| ---------- | ---------------------- | --------------------- |
+| `note`     | -                      | Blue, pencil icon     |
+| `abstract` | `summary`, `tldr`      | Teal, clipboard icon  |
+| `info`     | -                      | Blue, info icon       |
+| `todo`     | -                      | Blue, checkbox icon   |
+| `tip`      | `hint`, `important`    | Cyan, flame icon      |
+| `success`  | `check`, `done`        | Green, checkmark icon |
+| `question` | `help`, `faq`          | Yellow, question mark |
+| `warning`  | `caution`, `attention` | Orange, warning icon  |
+| `failure`  | `fail`, `missing`      | Red, X icon           |
+| `danger`   | `error`                | Red, zap icon         |
+| `bug`      | -                      | Red, bug icon         |
+| `example`  | -                      | Purple, list icon     |
+| `quote`    | `cite`                 | Gray, quote icon      |
 
 ### Custom Callouts (CSS)
 
@@ -242,13 +242,30 @@ tag:#project status:done
 
 ## Lists
 
+### Nested Lists and Indentation
+
+For proper depth representation in Obsidian, use **TAB characters** for indentation rather than spaces.
+
+- Obsidian renders nested list depth based on tab indentation
+- Each tab level represents one level of nesting
+- This ensures consistent rendering across different editors and sync clients
+
+Example with tabs:
+```markdown
+- Item 1
+	- Nested item (indented with TAB)
+	- Another nested item
+		- Double nested (2 TABs)
+- Item 2
+```
+
 ### Unordered Lists
 
 ```markdown
 - Item 1
 - Item 2
-  - Nested item
-  - Another nested
+	- Nested item (indented with TAB)
+	- Another nested
 - Item 3
 
 * Also works with asterisks
@@ -274,8 +291,8 @@ tag:#project status:done
 - [ ] Incomplete task
 - [x] Completed task
 - [ ] Task with sub-tasks
-  - [ ] Subtask 1
-  - [x] Subtask 2
+	- [ ] Subtask 1 (indented with TAB)
+	- [x] Subtask 2
 ```
 
 ## Quotes
@@ -336,7 +353,7 @@ console.log("Hello")
 
 ```markdown
 | Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
+| -------- | -------- | -------- |
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
 ```
@@ -344,17 +361,17 @@ console.log("Hello")
 ### Alignment
 
 ```markdown
-| Left     | Center   | Right    |
-|:---------|:--------:|---------:|
-| Left     | Center   | Right    |
+| Left | Center | Right |
+| :--- | :----: | ----: |
+| Left | Center | Right |
 ```
 
 ### Using Pipes in Tables
 
 Escape pipes with backslash:
 ```markdown
-| Column 1 | Column 2 |
-|----------|----------|
+| Column 1          | Column 2        |
+| ----------------- | --------------- |
 | [[Link\|Display]] | ![[Image\|100]] |
 ```
 
@@ -484,15 +501,15 @@ due: 2024-02-01T14:30:00
 
 ### Property Types
 
-| Type | Example |
-|------|---------|
-| Text | `title: My Title` |
-| Number | `rating: 4.5` |
-| Checkbox | `completed: true` |
-| Date | `date: 2024-01-15` |
-| Date & Time | `due: 2024-01-15T14:30:00` |
-| List | `tags: [one, two]` or YAML list |
-| Links | `related: "[[Other Note]]"` |
+| Type        | Example                         |
+| ----------- | ------------------------------- |
+| Text        | `title: My Title`               |
+| Number      | `rating: 4.5`                   |
+| Checkbox    | `completed: true`               |
+| Date        | `date: 2024-01-15`              |
+| Date & Time | `due: 2024-01-15T14:30:00`      |
+| List        | `tags: [one, two]` or YAML list |
+| Links       | `related: "[[Other Note]]"`     |
 
 ### Default Properties
 
