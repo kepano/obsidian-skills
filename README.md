@@ -11,6 +11,12 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 /plugin install obsidian@obsidian-skills
 ```
 
+### npx skills
+
+```
+npx skills add git@github.com:kepano/obsidian-skills.git
+```
+
 ### Manually
 
 #### Claude Code
