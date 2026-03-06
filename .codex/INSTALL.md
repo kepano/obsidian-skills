@@ -9,13 +9,13 @@ Run this from anywhere — no need to clone the repo first:
 macOS / Linux:
 
 ```bash
-tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
+tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/kepano/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
 ```
 
 Windows (PowerShell):
 
 ```powershell
-$tmp_dir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid()); New-Item -ItemType Directory -Path $tmp_dir | Out-Null; git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir\obsidian-skills"; & "$tmp_dir\obsidian-skills\scripts\install-skills-codex.ps1"; Remove-Item -Recurse -Force $tmp_dir
+$tmp_dir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid()); New-Item -ItemType Directory -Path $tmp_dir | Out-Null; git clone --depth 1 https://github.com/kepano/obsidian-skills.git "$tmp_dir\obsidian-skills"; & "$tmp_dir\obsidian-skills\scripts\install-skills-codex.ps1"; Remove-Item -Recurse -Force $tmp_dir
 ```
 
 ## Install from Repo Root

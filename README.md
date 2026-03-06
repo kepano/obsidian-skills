@@ -28,7 +28,7 @@ Add the contents of this repo to a `/.claude` folder in the root of your Obsidia
 **Option 1 — Tell Codex to install (recommended):**
 
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/Vinluo/obsidian-skills/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/kepano/obsidian-skills/main/.codex/INSTALL.md
 ```
 
 **Option 2 — One-line script install:**
@@ -36,13 +36,13 @@ Fetch and follow instructions from https://raw.githubusercontent.com/Vinluo/obsi
 macOS / Linux:
 
 ```bash
-tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
+tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/kepano/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
 ```
 
 Windows (PowerShell):
 
 ```powershell
-$tmp_dir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid()); New-Item -ItemType Directory -Path $tmp_dir | Out-Null; git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir\obsidian-skills"; & "$tmp_dir\obsidian-skills\scripts\install-skills-codex.ps1"; Remove-Item -Recurse -Force $tmp_dir
+$tmp_dir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid()); New-Item -ItemType Directory -Path $tmp_dir | Out-Null; git clone --depth 1 https://github.com/kepano/obsidian-skills.git "$tmp_dir\obsidian-skills"; & "$tmp_dir\obsidian-skills\scripts\install-skills-codex.ps1"; Remove-Item -Recurse -Force $tmp_dir
 ```
 
 **Option 3 — From the repo root:**
