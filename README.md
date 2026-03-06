@@ -33,14 +33,30 @@ Fetch and follow instructions from https://raw.githubusercontent.com/Vinluo/obsi
 
 **Option 2 — One-line script install:**
 
+macOS / Linux:
+
 ```bash
 tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
 ```
 
+Windows (PowerShell):
+
+```powershell
+$tmp_dir = Join-Path ([System.IO.Path]::GetTempPath()) ([System.Guid]::NewGuid()); New-Item -ItemType Directory -Path $tmp_dir | Out-Null; git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir\obsidian-skills"; & "$tmp_dir\obsidian-skills\scripts\install-skills-codex.ps1"; Remove-Item -Recurse -Force $tmp_dir
+```
+
 **Option 3 — From the repo root:**
+
+macOS / Linux:
 
 ```bash
 ./scripts/install-skills-codex.sh
+```
+
+Windows (PowerShell):
+
+```powershell
+.\scripts\install-skills-codex.ps1
 ```
 
 This installs all skills into `~/.agents/skills/obsidian-skills/`. Restart Codex to discover them. See [`.codex/INSTALL.md`](.codex/INSTALL.md) for options including `--dry-run` and custom target directories.
