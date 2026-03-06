@@ -25,7 +25,25 @@ Add the contents of this repo to a `/.claude` folder in the root of your Obsidia
 
 #### Codex CLI
 
-Copy the `skills/` directory into your Codex skills path (typically `~/.codex/skills`). See the [Agent Skills specification](https://agentskills.io/specification) for the standard skill format.
+**Option 1 — Tell Codex to install (recommended):**
+
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/Vinluo/obsidian-skills/main/.codex/INSTALL.md
+```
+
+**Option 2 — One-line script install:**
+
+```bash
+tmp_dir="$(mktemp -d)" && git clone --depth 1 https://github.com/Vinluo/obsidian-skills.git "$tmp_dir/obsidian-skills" && "$tmp_dir/obsidian-skills/scripts/install-skills-codex.sh" && rm -rf "$tmp_dir"
+```
+
+**Option 3 — From the repo root:**
+
+```bash
+./scripts/install-skills-codex.sh
+```
+
+This installs all skills into `~/.agents/skills/obsidian-skills/`. Restart Codex to discover them. See [`.codex/INSTALL.md`](.codex/INSTALL.md) for options including `--dry-run` and custom target directories.
 
 #### OpenCode
 
