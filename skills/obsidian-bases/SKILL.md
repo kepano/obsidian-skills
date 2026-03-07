@@ -6,17 +6,18 @@ context: fork
 
 # Obsidian Bases Skill
 
-This skill enables skills-compatible agents to create and edit valid Obsidian Bases (`.base` files) including views, filters, formulas, and all related configurations.
+## Workflow
 
-## Overview
+1. **Create the file**: Create a `.base` file in the vault with valid YAML content
+2. **Define scope**: Add `filters` to select which notes appear (by tag, folder, property, or date)
+3. **Add formulas** (optional): Define computed properties in the `formulas` section
+4. **Configure views**: Add one or more views (`table`, `cards`, `list`, or `map`) with `order` specifying which properties to display
+5. **Validate**: Verify the file is valid YAML with no syntax errors. Check that all referenced properties and formulas exist. Common issues: unquoted strings containing special YAML characters, mismatched quotes in formula expressions, referencing `formula.X` without defining `X` in `formulas`
+6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below
 
-Obsidian Bases are YAML-based files that define dynamic views of notes in an Obsidian vault. A Base file can contain multiple views, global filters, formulas, property configurations, and custom summaries.
+## Schema
 
-## File Format
-
-Base files use the `.base` extension and contain valid YAML. They can also be embedded in Markdown code blocks.
-
-## Complete Schema
+Base files use the `.base` extension and contain valid YAML.
 
 ```yaml
 # Global filters apply to ALL views in the base
@@ -29,7 +30,7 @@ filters:
 
 # Define formula properties that can be used across all views
 formulas:
-  formula_name: "expression"
+  formula_name: 'expression'
 
 # Configure display names and settings for properties
 properties:
@@ -42,23 +43,23 @@ properties:
 
 # Define custom summary formulas
 summaries:
-  custom_summary_name: "values.mean().round(3)"
+  custom_summary_name: 'values.mean().round(3)'
 
 # Define one or more views
 views:
   - type: table | cards | list | map
     name: "View Name"
-    limit: 10 # Optional: limit results
-    groupBy: # Optional: group results
+    limit: 10                    # Optional: limit results
+    groupBy:                     # Optional: group results
       property: property_name
       direction: ASC | DESC
-    filters: # View-specific filters
+    filters:                     # View-specific filters
       and: []
-    order: # Properties to display in order
+    order:                       # Properties to display in order
       - file.name
       - property_name
       - formula.formula_name
-    summaries: # Map properties to summary formulas
+    summaries:                   # Map properties to summary formulas
       property_name: Average
 ```
 
@@ -103,17 +104,17 @@ filters:
 
 ### Filter Operators
 
-| Operator       | Description           |
-| -------------- | --------------------- |
-| `==`           | equals                |
-| `!=`           | not equal             |
-| `>`            | greater than          |
-| `<`            | less than             |
-| `>=`           | greater than or equal |
-| `<=`           | less than or equal    |
-| `&&`           | logical and           |
-| `\|\|`         | logical or            |
-| <code>!</code> | logical not           |
+| Operator | Description |
+|----------|-------------|
+| `==` | equals |
+| `!=` | not equal |
+| `>` | greater than |
+| `<` | less than |
+| `>=` | greater than or equal |
+| `<=` | less than or equal |
+| `&&` | logical and |
+| `\|\|` | logical or |
+| <code>!</code> | logical not |
 
 ## Properties
 
@@ -125,21 +126,21 @@ filters:
 
 ### File Properties Reference
 
-| Property          | Type   | Description                 |
-| ----------------- | ------ | --------------------------- |
-| `file.name`       | String | File name                   |
-| `file.basename`   | String | File name without extension |
-| `file.path`       | String | Full path to file           |
-| `file.folder`     | String | Parent folder path          |
-| `file.ext`        | String | File extension              |
-| `file.size`       | Number | File size in bytes          |
-| `file.ctime`      | Date   | Created time                |
-| `file.mtime`      | Date   | Modified time               |
-| `file.tags`       | List   | All tags in file            |
-| `file.links`      | List   | Internal links in file      |
-| `file.backlinks`  | List   | Files linking to this file  |
-| `file.embeds`     | List   | Embeds in the note          |
-| `file.properties` | Object | All frontmatter properties  |
+| Property | Type | Description |
+|----------|------|-------------|
+| `file.name` | String | File name |
+| `file.basename` | String | File name without extension |
+| `file.path` | String | Full path to file |
+| `file.folder` | String | Parent folder path |
+| `file.ext` | String | File extension |
+| `file.size` | Number | File size in bytes |
+| `file.ctime` | Date | Created time |
+| `file.mtime` | Date | Modified time |
+| `file.tags` | List | All tags in file |
+| `file.links` | List | Internal links in file |
+| `file.backlinks` | List | Files linking to this file |
+| `file.embeds` | List | Embeds in the note |
+| `file.properties` | Object | All frontmatter properties |
 
 ### The `this` Keyword
 
@@ -166,77 +167,39 @@ formulas:
   created: 'file.ctime.format("YYYY-MM-DD")'
 
   # Calculate days since created (use .days for Duration)
-  days_old: "(now() - file.ctime).days"
+  days_old: '(now() - file.ctime).days'
 
   # Calculate days until due date
   days_until_due: 'if(due_date, (date(due_date) - today()).days, "")'
 ```
 
-## Functions Reference
+## Key Functions
 
-### Global Functions
+Most commonly used functions. For the complete reference of all types (Date, String, Number, List, File, Link, Object, RegExp), see [FUNCTIONS_REFERENCE.md](references/FUNCTIONS_REFERENCE.md).
 
-| Function       | Signature                                 | Description                                         |
-| -------------- | ----------------------------------------- | --------------------------------------------------- |
-| `date()`       | `date(string): date`                      | Parse string to date. Format: `YYYY-MM-DD HH:mm:ss` |
-| `duration()`   | `duration(string): duration`              | Parse duration string                               |
-| `now()`        | `now(): date`                             | Current date and time                               |
-| `today()`      | `today(): date`                           | Current date (time = 00:00:00)                      |
-| `if()`         | `if(condition, trueResult, falseResult?)` | Conditional                                         |
-| `min()`        | `min(n1, n2, ...): number`                | Smallest number                                     |
-| `max()`        | `max(n1, n2, ...): number`                | Largest number                                      |
-| `number()`     | `number(any): number`                     | Convert to number                                   |
-| `link()`       | `link(path, display?): Link`              | Create a link                                       |
-| `list()`       | `list(element): List`                     | Wrap in list if not already                         |
-| `file()`       | `file(path): file`                        | Get file object                                     |
-| `image()`      | `image(path): image`                      | Create image for rendering                          |
-| `icon()`       | `icon(name): icon`                        | Lucide icon by name                                 |
-| `html()`       | `html(string): html`                      | Render as HTML                                      |
-| `escapeHTML()` | `escapeHTML(string): string`              | Escape HTML characters                              |
-
-### Any Type Functions
-
-| Function     | Signature                   | Description       |
-| ------------ | --------------------------- | ----------------- |
-| `isTruthy()` | `any.isTruthy(): boolean`   | Coerce to boolean |
-| `isType()`   | `any.isType(type): boolean` | Check type        |
-| `toString()` | `any.toString(): string`    | Convert to string |
-
-### Date Functions & Fields
-
-**Fields:** `date.year`, `date.month`, `date.day`, `date.hour`, `date.minute`, `date.second`, `date.millisecond`
-
-| Function     | Signature                     | Description                   |
-| ------------ | ----------------------------- | ----------------------------- |
-| `date()`     | `date.date(): date`           | Remove time portion           |
-| `format()`   | `date.format(string): string` | Format with Moment.js pattern |
-| `time()`     | `date.time(): string`         | Get time as string            |
-| `relative()` | `date.relative(): string`     | Human-readable relative time  |
-| `isEmpty()`  | `date.isEmpty(): boolean`     | Always false for dates        |
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `date()` | `date(string): date` | Parse string to date (`YYYY-MM-DD HH:mm:ss`) |
+| `now()` | `now(): date` | Current date and time |
+| `today()` | `today(): date` | Current date (time = 00:00:00) |
+| `if()` | `if(condition, trueResult, falseResult?)` | Conditional |
+| `duration()` | `duration(string): duration` | Parse duration string |
+| `file()` | `file(path): file` | Get file object |
+| `link()` | `link(path, display?): Link` | Create a link |
 
 ### Duration Type
 
-When subtracting two dates, the result is a **Duration** type (not a number). Duration has its own properties and methods.
+When subtracting two dates, the result is a **Duration** type (not a number).
 
-**Duration Fields:**
-| Field | Type | Description |
-|-------|------|-------------|
-| `duration.days` | Number | Total days in duration |
-| `duration.hours` | Number | Total hours in duration |
-| `duration.minutes` | Number | Total minutes in duration |
-| `duration.seconds` | Number | Total seconds in duration |
-| `duration.milliseconds` | Number | Total milliseconds in duration |
+**Duration Fields:** `duration.days`, `duration.hours`, `duration.minutes`, `duration.seconds`, `duration.milliseconds`
 
-**IMPORTANT:** Duration does NOT support `.round()`, `.floor()`, `.ceil()` directly. You must access a numeric field first (like `.days`), then apply number functions.
+**IMPORTANT:** Duration does NOT support `.round()`, `.floor()`, `.ceil()` directly. Access a numeric field first (like `.days`), then apply number functions.
 
 ```yaml
 # CORRECT: Calculate days between dates
 "(date(due_date) - today()).days"                    # Returns number of days
 "(now() - file.ctime).days"                          # Days since created
-
-# CORRECT: Round the numeric result if needed
 "(date(due_date) - today()).days.round(0)"           # Rounded days
-"(now() - file.ctime).hours.round(0)"                # Rounded hours
 
 # WRONG - will cause error:
 # "((date(due) - today()) / 86400000).round(0)"      # Duration doesn't support division then round
@@ -247,104 +210,11 @@ When subtracting two dates, the result is a **Duration** type (not a number). Du
 ```yaml
 # Duration units: y/year/years, M/month/months, d/day/days,
 #                 w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
-
-# Add/subtract durations
-"date + \"1M\""           # Add 1 month
-"date - \"2h\""           # Subtract 2 hours
 "now() + \"1 day\""       # Tomorrow
 "today() + \"7d\""        # A week from today
-
-# Subtract dates returns Duration type
-"now() - file.ctime"                    # Returns Duration
-"(now() - file.ctime).days"             # Get days as number
-"(now() - file.ctime).hours"            # Get hours as number
-
-# Complex duration arithmetic
-"now() + (duration('1d') * 2)"
+"now() - file.ctime"      # Returns Duration
+"(now() - file.ctime).days"  # Get days as number
 ```
-
-### String Functions
-
-**Field:** `string.length`
-
-| Function        | Signature                                      | Description            |
-| --------------- | ---------------------------------------------- | ---------------------- |
-| `contains()`    | `string.contains(value): boolean`              | Check substring        |
-| `containsAll()` | `string.containsAll(...values): boolean`       | All substrings present |
-| `containsAny()` | `string.containsAny(...values): boolean`       | Any substring present  |
-| `startsWith()`  | `string.startsWith(query): boolean`            | Starts with query      |
-| `endsWith()`    | `string.endsWith(query): boolean`              | Ends with query        |
-| `isEmpty()`     | `string.isEmpty(): boolean`                    | Empty or not present   |
-| `lower()`       | `string.lower(): string`                       | To lowercase           |
-| `title()`       | `string.title(): string`                       | To Title Case          |
-| `trim()`        | `string.trim(): string`                        | Remove whitespace      |
-| `replace()`     | `string.replace(pattern, replacement): string` | Replace pattern        |
-| `repeat()`      | `string.repeat(count): string`                 | Repeat string          |
-| `reverse()`     | `string.reverse(): string`                     | Reverse string         |
-| `slice()`       | `string.slice(start, end?): string`            | Substring              |
-| `split()`       | `string.split(separator, n?): list`            | Split to list          |
-
-### Number Functions
-
-| Function    | Signature                           | Description          |
-| ----------- | ----------------------------------- | -------------------- |
-| `abs()`     | `number.abs(): number`              | Absolute value       |
-| `ceil()`    | `number.ceil(): number`             | Round up             |
-| `floor()`   | `number.floor(): number`            | Round down           |
-| `round()`   | `number.round(digits?): number`     | Round to digits      |
-| `toFixed()` | `number.toFixed(precision): string` | Fixed-point notation |
-| `isEmpty()` | `number.isEmpty(): boolean`         | Not present          |
-
-### List Functions
-
-**Field:** `list.length`
-
-| Function        | Signature                               | Description                                           |
-| --------------- | --------------------------------------- | ----------------------------------------------------- |
-| `contains()`    | `list.contains(value): boolean`         | Element exists                                        |
-| `containsAll()` | `list.containsAll(...values): boolean`  | All elements exist                                    |
-| `containsAny()` | `list.containsAny(...values): boolean`  | Any element exists                                    |
-| `filter()`      | `list.filter(expression): list`         | Filter by condition (uses `value`, `index`)           |
-| `map()`         | `list.map(expression): list`            | Transform elements (uses `value`, `index`)            |
-| `reduce()`      | `list.reduce(expression, initial): any` | Reduce to single value (uses `value`, `index`, `acc`) |
-| `flat()`        | `list.flat(): list`                     | Flatten nested lists                                  |
-| `join()`        | `list.join(separator): string`          | Join to string                                        |
-| `reverse()`     | `list.reverse(): list`                  | Reverse order                                         |
-| `slice()`       | `list.slice(start, end?): list`         | Sublist                                               |
-| `sort()`        | `list.sort(): list`                     | Sort ascending                                        |
-| `unique()`      | `list.unique(): list`                   | Remove duplicates                                     |
-| `isEmpty()`     | `list.isEmpty(): boolean`               | No elements                                           |
-
-### File Functions
-
-| Function        | Signature                          | Description            |
-| --------------- | ---------------------------------- | ---------------------- |
-| `asLink()`      | `file.asLink(display?): Link`      | Convert to link        |
-| `hasLink()`     | `file.hasLink(otherFile): boolean` | Has link to file       |
-| `hasTag()`      | `file.hasTag(...tags): boolean`    | Has any of the tags    |
-| `hasProperty()` | `file.hasProperty(name): boolean`  | Has property           |
-| `inFolder()`    | `file.inFolder(folder): boolean`   | In folder or subfolder |
-
-### Link Functions
-
-| Function    | Signature                     | Description     |
-| ----------- | ----------------------------- | --------------- |
-| `asFile()`  | `link.asFile(): file`         | Get file object |
-| `linksTo()` | `link.linksTo(file): boolean` | Links to file   |
-
-### Object Functions
-
-| Function    | Signature                   | Description    |
-| ----------- | --------------------------- | -------------- |
-| `isEmpty()` | `object.isEmpty(): boolean` | No properties  |
-| `keys()`    | `object.keys(): list`       | List of keys   |
-| `values()`  | `object.values(): list`     | List of values |
-
-### Regular Expression Functions
-
-| Function    | Signature                         | Description     |
-| ----------- | --------------------------------- | --------------- |
-| `matches()` | `regexp.matches(string): boolean` | Test if matches |
 
 ## View Types
 
@@ -399,23 +269,23 @@ views:
 
 ## Default Summary Formulas
 
-| Name        | Input Type | Description               |
-| ----------- | ---------- | ------------------------- |
-| `Average`   | Number     | Mathematical mean         |
-| `Min`       | Number     | Smallest number           |
-| `Max`       | Number     | Largest number            |
-| `Sum`       | Number     | Sum of all numbers        |
-| `Range`     | Number     | Max - Min                 |
-| `Median`    | Number     | Mathematical median       |
-| `Stddev`    | Number     | Standard deviation        |
-| `Earliest`  | Date       | Earliest date             |
-| `Latest`    | Date       | Latest date               |
-| `Range`     | Date       | Latest - Earliest         |
-| `Checked`   | Boolean    | Count of true values      |
-| `Unchecked` | Boolean    | Count of false values     |
-| `Empty`     | Any        | Count of empty values     |
-| `Filled`    | Any        | Count of non-empty values |
-| `Unique`    | Any        | Count of unique values    |
+| Name | Input Type | Description |
+|------|------------|-------------|
+| `Average` | Number | Mathematical mean |
+| `Min` | Number | Smallest number |
+| `Max` | Number | Largest number |
+| `Sum` | Number | Sum of all numbers |
+| `Range` | Number | Max - Min |
+| `Median` | Number | Mathematical median |
+| `Stddev` | Number | Standard deviation |
+| `Earliest` | Date | Earliest date |
+| `Latest` | Date | Latest date |
+| `Range` | Date | Latest - Earliest |
+| `Checked` | Boolean | Count of true values |
+| `Unchecked` | Boolean | Count of false values |
+| `Empty` | Any | Count of empty values |
+| `Filled` | Any | Count of non-empty values |
+| `Unique` | Any | Count of unique values |
 
 ## Complete Examples
 
@@ -513,48 +383,6 @@ views:
       - formula.reading_time
 ```
 
-### Project Notes Base
-
-```yaml
-filters:
-  and:
-    - file.inFolder("Projects")
-    - 'file.ext == "md"'
-
-formulas:
-  last_updated: "file.mtime.relative()"
-  link_count: "file.links.length"
-
-summaries:
-  avgLinks: 'values.filter(value.isType("number")).mean().round(1)'
-
-properties:
-  formula.last_updated:
-    displayName: "Updated"
-  formula.link_count:
-    displayName: "Links"
-
-views:
-  - type: table
-    name: "All Projects"
-    order:
-      - file.name
-      - status
-      - formula.last_updated
-      - formula.link_count
-    summaries:
-      formula.link_count: avgLinks
-    groupBy:
-      property: status
-      direction: ASC
-
-  - type: list
-    name: "Quick List"
-    order:
-      - file.name
-      - status
-```
-
 ### Daily Notes Index
 
 ```yaml
@@ -564,7 +392,7 @@ filters:
     - '/^\d{4}-\d{2}-\d{2}$/.matches(file.basename)'
 
 formulas:
-  word_estimate: "(file.size / 5).round(0)"
+  word_estimate: '(file.size / 5).round(0)'
   day_of_week: 'date(file.basename).format("dddd")'
 
 properties:
@@ -592,7 +420,6 @@ Embed in Markdown files:
 ![[MyBase.base]]
 
 <!-- Specific view -->
-
 ![[MyBase.base#View Name]]
 ```
 
@@ -602,52 +429,64 @@ Embed in Markdown files:
 - Use double quotes for simple strings: `"My View Name"`
 - Escape nested quotes properly in complex expressions
 
-## Common Patterns
+## Troubleshooting
 
-### Filter by Tag
+### YAML Syntax Errors
+
+**Unquoted special characters**: Strings containing `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `` ` `` must be quoted.
 
 ```yaml
-filters:
-  and:
-    - file.hasTag("project")
+# WRONG - colon in unquoted string
+displayName: Status: Active
+
+# CORRECT
+displayName: "Status: Active"
 ```
 
-### Filter by Folder
+**Mismatched quotes in formulas**: When a formula contains double quotes, wrap the entire formula in single quotes.
 
 ```yaml
-filters:
-  and:
-    - file.inFolder("Notes")
+# WRONG - double quotes inside double quotes
+formulas:
+  label: "if(done, "Yes", "No")"
+
+# CORRECT - single quotes wrapping double quotes
+formulas:
+  label: 'if(done, "Yes", "No")'
 ```
 
-### Filter by Date Range
+### Common Formula Errors
+
+**Duration math without field access**: Subtracting dates returns a Duration, not a number. Always access `.days`, `.hours`, etc.
 
 ```yaml
-filters:
-  and:
-    - 'file.mtime > now() - "7d"'
+# WRONG - Duration is not a number
+"(now() - file.ctime).round(0)"
+
+# CORRECT - access .days first, then round
+"(now() - file.ctime).days.round(0)"
 ```
 
-### Filter by Property Value
+**Missing null checks**: Properties may not exist on all notes. Use `if()` to guard.
 
 ```yaml
-filters:
-  and:
-    - 'status == "active"'
-    - "priority >= 3"
+# WRONG - crashes if due_date is empty
+"(date(due_date) - today()).days"
+
+# CORRECT - guard with if()
+'if(due_date, (date(due_date) - today()).days, "")'
 ```
 
-### Combine Multiple Conditions
+**Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
 
 ```yaml
-filters:
-  or:
-    - and:
-        - file.hasTag("important")
-        - 'status != "done"'
-    - and:
-        - "priority == 1"
-        - 'due != ""'
+# This will fail silently if 'total' is not defined in formulas
+order:
+  - formula.total
+
+# Fix: define it
+formulas:
+  total: "price * quantity"
 ```
 
 ## References
@@ -656,3 +495,4 @@ filters:
 - [Functions](https://help.obsidian.md/bases/functions)
 - [Views](https://help.obsidian.md/bases/views)
 - [Formulas](https://help.obsidian.md/formulas)
+- [Complete Functions Reference](references/FUNCTIONS_REFERENCE.md)
