@@ -17,7 +17,7 @@
 | `file()` | `file(path): file` | Get file object |
 | `image()` | `image(path): image` | Create image for rendering |
 | `icon()` | `icon(name): icon` | Lucide icon by name |
-| `html()` | `html(string): html` | Render as HTML |
+| `html()` | `html(string): html` | Render as HTML. **⚠️ XSS risk:** Never pass untrusted or user-supplied strings. Only use with content you control. |
 | `escapeHTML()` | `escapeHTML(string): string` | Escape HTML characters |
 
 ## Any Type Functions

@@ -1,0 +1,18 @@
+# Environment and secrets
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Editor
+*.swp
+*.swo
+*~
