@@ -92,6 +92,8 @@ Run JavaScript in the app context:
 obsidian eval code="app.vault.getFiles().length"
 ```
 
+> **⚠️ Security Warning:** The `obsidian eval` command executes arbitrary JavaScript with full access to the Obsidian app context and the local filesystem. Never run eval with untrusted or user-supplied input. Only use this command with code you have personally reviewed and trust.
+
 Inspect CSS values:
 
 ```bash
