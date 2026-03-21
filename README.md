@@ -28,7 +28,7 @@ Add the contents of this repo to a `/.claude` folder in the root of your Obsidia
 Install the extension directly from the Git repository:
 
 ```sh
-gemini extensions install https://github.com/kepano/obsidian-skills
+gemini extensions install https://github.com/kepano/obsidian-skills --auto-update
 ```
 
 ### Codex CLI
