@@ -11,10 +11,14 @@
             "id": "7ea41d6318f5e633",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "raw/landplan/docs/requirements_planning.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "requirements_planning"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 422.5
   },
   "right": {
     "id": "71201dedb00f75be",
@@ -179,44 +183,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "7ea41d6318f5e633",
+  "active": "929455d328d274b7",
   "lastOpenFiles": [
-    "wiki/projects/home-assistant/README.md",
-    "wiki/projects/tinkergis/README.md",
-    "wiki/projects/midi-looper/README.md",
-    "wiki/projects/capo/README.md",
-    "wiki/projects/directive/README.md",
+    "wiki/platforms/landplan/backlog/feature-ideas.md",
+    "wiki/platforms/landplan/backlog/tags-system.md",
+    "wiki/platforms/landplan/roadmap/build-roadmap.md",
+    "wiki/platforms/landplan/roadmap/epic-plan-export.md",
+    "wiki/platforms/landplan/roadmap/epic-gps-accuracy-templates.md",
+    "raw/landplan/Market Evaluation.md",
+    "raw/landplan/LandPlan.app.md",
+    "raw/landplan/EPIC Plan Export — browser zip download and Google Drive export.md",
+    "wiki/platforms/landplan/roadmap/epic-planning.md",
+    "wiki/platforms/landplan/architecture/architecture.md",
+    "raw/landplan/help-docs",
+    "wiki/platforms/landplan/roadmap/epic-trees.md",
+    "wiki/platforms/landplan/roadmap/epic-3d-models.md",
+    "wiki/platforms/landplan/roadmap/epic-gcs-storage.md",
+    "wiki/platforms/landplan/roadmap/epic-plan-sharing.md",
     "wiki/platforms/landplan/README.md",
-    "README.md",
-    "untitled folder",
-    "wiki/untitled folder",
-    "CLAUDE.md",
-    "CLAUDE.md.md",
-    "wiki/platforms/landplan/roadmap",
-    "wiki/platforms/landplan/help",
-    "wiki/platforms/landplan/backlog",
-    "wiki/projects/tinkergis",
-    "wiki/projects/midi-looper",
-    "wiki/projects/home-assistant",
-    "wiki/projects/directive",
-    "wiki/projects/capo",
-    "wiki/meta/log.md",
+    "wiki/platforms/landplan/architecture",
     "wiki/meta/index.md",
+    "wiki/meta/log.md",
     "wiki/meta/hot.md",
-    "skills/obsidian-markdown/references/PROPERTIES.md",
-    "skills/json-canvas/references/EXAMPLES.md",
-    "skills/obsidian-markdown/references/EMBEDS.md",
-    "skills/obsidian-markdown/references/CALLOUTS.md",
-    "skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
-    "skills/obsidian-markdown/SKILL.md",
-    "skills/obsidian-cli/SKILL.md",
-    "skills/obsidian-bases/SKILL.md",
-    "skills/json-canvas/SKILL.md",
-    "skills/defuddle/SKILL.md",
-    "Untitled.canvas",
-    "LandPlan Tags.md",
-    "LandPlan.app.md",
-    "Product Brainstorm.md",
-    "Untitled.md"
+    "wiki/projects/tinkergis/README.md",
+    "wiki/platforms/landplan/design/stitch-designs.md",
+    "wiki/platforms/landplan/design/terra-contour.md",
+    "wiki/platforms/landplan/design",
+    "wiki/platforms/landplan/market/business-model.md",
+    "wiki/platforms/landplan/market/competitive-analysis.md",
+    "wiki/platforms/landplan/market",
+    "wiki/platforms/landplan/products/survey-gps-receiver.md",
+    "wiki/platforms/landplan/products/survey-mobile.md",
+    "wiki/platforms/landplan/products/landplan-app.md",
+    "wiki/platforms/landplan/products",
+    "raw/landplan/docs",
+    "raw/docs",
+    "raw/landplan",
+    "raw/New Folder With Items/landplan",
+    "raw/New Folder With Items",
+    "Untitled.canvas"
   ]
 }

@@ -27,7 +27,6 @@ wiki/         Compiled, cross-linked knowledge. Claude maintains this.
     directive/    Process documentation app (React/Vite/TS + Node/Express)
     capo/         CAPO whitepaper and concept development
     midi-looper/  Raspberry Pi MIDI looper (Python/Kivy)
-    tinkergis/    TinkerGIS desktop app (Tauri/Rust/Leaflet)
     home-assistant/ Home Assistant / Raspberry Pi configs
   concepts/     Shared ideas, patterns, architectural decisions
   entities/     Tools, APIs, services, people
