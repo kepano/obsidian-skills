@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "b1e587d2fa333de3",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7b86b08f0d992b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7ea41d6318f5e633",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9514113362f59f03",
+    "type": "split",
+    "children": [
+      {
+        "id": "77b15ee6f81f5c71",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "929455d328d274b7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "4164afe73048aef8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "fdeb2726b645e13d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "71201dedb00f75be",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4cb02980f708188",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b02623ecc3874f62",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "LandPlan Tags.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for LandPlan Tags"
+            }
+          },
+          {
+            "id": "e9db00d357b60797",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "LandPlan Tags.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from LandPlan Tags"
+            }
+          },
+          {
+            "id": "f9e6315d33c042ed",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "1b14b23be3cb01e2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "fc8af23562eaaf66",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "LandPlan Tags.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of LandPlan Tags"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "7ea41d6318f5e633",
+  "lastOpenFiles": [
+    "wiki/projects/home-assistant/README.md",
+    "wiki/projects/tinkergis/README.md",
+    "wiki/projects/midi-looper/README.md",
+    "wiki/projects/capo/README.md",
+    "wiki/projects/directive/README.md",
+    "wiki/platforms/landplan/README.md",
+    "README.md",
+    "untitled folder",
+    "wiki/untitled folder",
+    "CLAUDE.md",
+    "CLAUDE.md.md",
+    "wiki/platforms/landplan/roadmap",
+    "wiki/platforms/landplan/help",
+    "wiki/platforms/landplan/backlog",
+    "wiki/projects/tinkergis",
+    "wiki/projects/midi-looper",
+    "wiki/projects/home-assistant",
+    "wiki/projects/directive",
+    "wiki/projects/capo",
+    "wiki/meta/log.md",
+    "wiki/meta/index.md",
+    "wiki/meta/hot.md",
+    "skills/obsidian-markdown/references/PROPERTIES.md",
+    "skills/json-canvas/references/EXAMPLES.md",
+    "skills/obsidian-markdown/references/EMBEDS.md",
+    "skills/obsidian-markdown/references/CALLOUTS.md",
+    "skills/obsidian-bases/references/FUNCTIONS_REFERENCE.md",
+    "skills/obsidian-markdown/SKILL.md",
+    "skills/obsidian-cli/SKILL.md",
+    "skills/obsidian-bases/SKILL.md",
+    "skills/json-canvas/SKILL.md",
+    "skills/defuddle/SKILL.md",
+    "Untitled.canvas",
+    "LandPlan Tags.md",
+    "LandPlan.app.md",
+    "Product Brainstorm.md",
+    "Untitled.md"
+  ]
+}

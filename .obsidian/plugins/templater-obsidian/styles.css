@@ -1,0 +1,226 @@
+.templater_search {
+    width: calc(100% - 20px);
+}
+
+.templater_div {
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.templater_div > .setting-item {
+    border-top: none !important;
+    align-self: center;
+}
+
+.templater_div > .setting-item > .setting-item-control {
+    justify-content: space-around;
+    padding: 0;
+    width: 100%;
+}
+
+.templater_div
+    > .setting-item
+    > .setting-item-control
+    > .setting-editor-extra-setting-button {
+    align-self: center;
+}
+
+.templater_donating {
+    margin: 10px;
+}
+
+.templater_title {
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.templater_template {
+    align-self: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 70%;
+}
+
+.templater_cmd {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.templater_div2 > .setting-item {
+    align-content: center;
+    justify-content: center;
+}
+
+.templater-prompt-div,
+.templater-multisuggester-div {
+    display: flex;
+}
+
+.templater-prompt-form {
+    display: flex;
+    flex-grow: 1;
+}
+
+.templater-prompt-input,
+.templater-multisuggester-input {
+    flex-grow: 1;
+}
+
+.templater-button-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+textarea.templater-prompt-input {
+    height: 10rem;
+}
+
+textarea.templater-prompt-input:focus {
+    border-color: var(--interactive-accent);
+}
+
+.templater-multisuggester-list {
+    margin: 1.5em 0;
+}
+
+.cm-s-obsidian .templater-command-bg {
+    left: 0px;
+    right: 0px;
+    background-color: var(--background-primary-alt);
+}
+
+.cm-s-obsidian .cm-templater-command {
+    font-size: 0.85em;
+    font-family: var(--font-monospace);
+    line-height: 1.3;
+}
+
+.cm-s-obsidian .templater-inline .cm-templater-command {
+    background-color: var(--background-primary-alt);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-templater-opening-tag {
+    font-weight: bold;
+}
+
+.cm-s-obsidian .cm-templater-command.cm-templater-closing-tag {
+    font-weight: bold;
+}
+
+.cm-s-obsidian .cm-templater-command.cm-templater-interpolation-tag {
+    color: var(--code-property, #008bff);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-templater-execution-tag {
+    color: var(--code-function, #c0d700);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-keyword {
+    color: var(--code-keyword, #00a7aa);
+    font-weight: normal;
+}
+
+.cm-s-obsidian .cm-templater-command.cm-atom {
+    color: var(--code-normal, #f39b35);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-value,
+.cm-s-obsidian .cm-templater-command.cm-number,
+.cm-s-obsidian .cm-templater-command.cm-type {
+    color: var(--code-value, #a06fca);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-def,
+.cm-s-obsidian .cm-templater-command.cm-type.cm-def {
+    color: var(--code-normal, var(--text-normal));
+}
+
+.cm-s-obsidian .cm-templater-command.cm-property,
+.cm-s-obsidian .cm-templater-command.cm-property.cm-def,
+.cm-s-obsidian .cm-templater-command.cm-attribute {
+    color: var(--code-function, #98e342);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-variable,
+.cm-s-obsidian .cm-templater-command.cm-variable-2,
+.cm-s-obsidian .cm-templater-command.cm-variable-3,
+.cm-s-obsidian .cm-templater-command.cm-meta {
+    color: var(--code-property, #d4d4d4);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-callee,
+.cm-s-obsidian .cm-templater-command.cm-operator,
+.cm-s-obsidian .cm-templater-command.cm-qualifier,
+.cm-s-obsidian .cm-templater-command.cm-builtin {
+    color: var(--code-operator, #fc4384);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-tag {
+    color: var(--code-tag, #fc4384);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-comment,
+.cm-s-obsidian .cm-templater-command.cm-comment.cm-tag,
+.cm-s-obsidian .cm-templater-command.cm-comment.cm-attribute {
+    color: var(--code-comment, #696d70);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-string,
+.cm-s-obsidian .cm-templater-command.cm-string-2 {
+    color: var(--code-string, #e6db74);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-header,
+.cm-s-obsidian .cm-templater-command.cm-hr {
+    color: var(--code-keyword, #da7dae);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-link {
+    color: var(--code-normal, #696d70);
+}
+
+.cm-s-obsidian .cm-templater-command.cm-error {
+    border-bottom: 1px solid #c42412;
+}
+
+.CodeMirror-hints {
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    list-style: none;
+
+    margin: 0;
+    padding: 2px;
+
+    -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    border: 1px solid silver;
+
+    background: white;
+    font-size: 90%;
+    font-family: monospace;
+
+    max-height: 20em;
+    overflow-y: auto;
+}
+
+.CodeMirror-hint {
+    margin: 0;
+    padding: 0 4px;
+    border-radius: 2px;
+    white-space: pre;
+    color: black;
+    cursor: pointer;
+}
+
+li.CodeMirror-hint-active {
+    background: #08f;
+    color: white;
+}
