@@ -79,6 +79,13 @@ status: growing
 | [[wiki/platforms/landplan/backlog/tags-system\|Tags System]] | Map object category issues and flexible tagging proposal |
 | [[wiki/platforms/landplan/backlog/feature-ideas\|Feature Ideas]] | Deferred and unscheduled features |
 
+**Help**
+
+| Page | Description |
+| ---- | ----------- |
+| [[wiki/platforms/landplan/help/index\|Help Index]] | End-user documentation hub — lists articles and planned content |
+| [[wiki/platforms/landplan/help/coordinate-accuracy\|Coordinate Accuracy]] | What accuracy means, how LandPlan shows it, how to get better data |
+
 ---
 
 ## Projects
@@ -90,7 +97,10 @@ status: growing
 | [[wiki/projects/midi-looper/README\|MIDI Looper]] | Raspberry Pi MIDI looper (Python/Kivy) |
 | [[wiki/projects/tinkergis/README\|TinkerGIS]] | ~~Desktop GIS app~~ **Archived** — evolved into LandPlan.app |
 | [[wiki/projects/home-assistant/README\|Home Assistant]] | Home Assistant / Raspberry Pi configs |
+| [[wiki/projects/smart-farm-permaculture/README\|SmartFarmPermaculture]] | Small permaculture farm concept |
+| [[wiki/projects/smart-train/README\|SmartTrain]] | Fun project concept — details TBD |
+| [[wiki/projects/edrums/README\|eDrums]] | Electronic drums fun project |
 
 ---
 
-*Last updated 2026-04-18 — full raw/ ingest session.*
+*Last updated 2026-04-19 — fun-projects stubs added; help section created.*

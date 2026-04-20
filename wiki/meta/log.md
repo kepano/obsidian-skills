@@ -13,6 +13,68 @@ status: growing
 
 ---
 
+## 2026-04-19 — raw/landplan Reprocess + Help Section
+
+**Session goal:** Full reprocess of raw/landplan (root files + docs/) against existing wiki pages. Assess accuracy and completeness; create missing content.
+
+**Finding — existing wiki pages:** All 18 wiki pages created on 2026-04-18 are comprehensive and faithful to their raw source files. No inaccuracies found. Architecture page correctly reflects GCS storage (overriding the Planning-era Drive references in raw architecture.md).
+
+**Finding — missing:** `wiki/platforms/landplan/help/` folder (specified in CLAUDE.md) did not exist. The raw `LandPlan Help Guides and Training.md` is empty, but the GPS Accuracy epic (§3) explicitly specifies a "About coordinate accuracy" help article. The help section was created.
+
+**Created:**
+- `wiki/platforms/landplan/help/index.md` — help documentation hub with article list and planned content
+- `wiki/platforms/landplan/help/coordinate-accuracy.md` — full second-person help article on GPS accuracy, tiers, and how to get better data (specified in [[epic-gps-accuracy-templates]] §3.1)
+
+**Updated:**
+- `wiki/meta/index.md` — Help section added (two pages)
+- `wiki/meta/log.md` — this entry
+- `wiki/meta/hot.md` — last session updated
+
+**Raw files re-assessed (all confirmed current):**
+- `raw/landplan/LandPlan Help Guides and Training.md` (empty — help section bootstrapped from requirements instead)
+- `raw/landplan/docs/architecture.md` → [[architecture]] ✅
+- `raw/landplan/docs/DESIGN.md` → [[terra-contour]] ✅
+- `raw/landplan/docs/requirements_planning.md` → [[epic-planning]] ✅
+- `raw/landplan/docs/requirements_trees.md` → [[epic-trees]] ✅
+- `raw/landplan/docs/requirements_3d_models.md` → [[epic-3d-models]] ✅
+- `raw/landplan/docs/requirements_sharing.md` → [[epic-plan-sharing]] ✅
+- `raw/landplan/docs/build_roadmap.md` → [[build-roadmap]] ✅
+- `raw/landplan/docs/landplan-stitch-prompt-projects.md` → [[stitch-designs]] ✅
+- `raw/landplan/LandPlan — GPS Accuracy...md` → [[epic-gps-accuracy-templates]] ✅
+- `raw/landplan/EPIC Plan Export.md` → [[epic-plan-export]] ✅
+- `raw/landplan/EPIC Replace Google Drive with GCS.md` → [[epic-gcs-storage]] ✅
+- `raw/landplan/Market Evaluation.md` → [[competitive-analysis]] ✅
+- `raw/landplan/LandPlan Business Model.md` → [[business-model]] ✅
+- `raw/landplan/LandPlan Tags.md` → [[tags-system]] ✅
+- `raw/landplan/LandPlan Feature Roadmap.md` → [[landplan-app]] (hub links) ✅
+- `raw/landplan/LandPlan Product Brainstorm.md` → product pages ✅
+- `raw/landplan/LandPlan.app.md` → [[landplan-app]] ✅
+
+---
+
+## 2026-04-19 — Fun Projects Stubs
+
+**Session goal:** Librarian cleanup — process remaining raw/ files not fully converted in last session.
+
+**Finding:** All `raw/landplan/` files were fully ingested on 2026-04-18. Remaining unprocessed raw material was in `raw/fun-projects/Fun Projects Brainstorming.md`, which listed four project names: HomeAssistant (already had a wiki page), SmartFarmPermaculture, SmartTrain, and eDrums.
+
+**Created:**
+- `wiki/projects/smart-farm-permaculture/README.md` — SmartFarmPermaculture concept stub
+- `wiki/projects/smart-train/README.md` — SmartTrain concept stub
+- `wiki/projects/edrums/README.md` — eDrums concept stub
+
+**Updated:**
+- `wiki/meta/index.md` — added three new project entries
+- `wiki/meta/log.md` — this entry
+- `wiki/meta/hot.md` — updated last session
+
+**Raw files assessed:**
+- `raw/fun-projects/Fun Projects Brainstorming.md` — fully processed; three new stubs created
+- `raw/fun-projects/HomeAssistant.md` — empty; no action
+- `raw/directive/Directive Product Brainstorm.md` — one-liner stub only; existing wiki page already captures it
+
+---
+
 ## 2026-04-18 — Full Ingest of raw/ Directory
 
 **Session goal:** Process all content in `raw/` into cross-linked wiki pages. Confirm three LandPlan product names. Archive TinkerGIS.
