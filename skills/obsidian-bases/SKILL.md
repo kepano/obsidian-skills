@@ -5,6 +5,10 @@ description: Create and edit Obsidian Bases (.base files) with views, filters, f
 
 # Obsidian Bases Skill
 
+## Prerequisite
+
+Bases is a **core plugin** introduced in Obsidian v1.9, but it is **not always enabled by default** — particularly in vaults that predate v1.9. If `.base` files don't appear in the file tree or won't render, check that `.obsidian/core-plugins.json` contains `"bases": true`. Enable via Settings → Core plugins → Bases, or edit the JSON and reload the vault.
+
 ## Workflow
 
 1. **Create the file**: Create a `.base` file in the vault with valid YAML content
@@ -31,13 +35,15 @@ filters:
 formulas:
   formula_name: 'expression'
 
-# Configure display names and settings for properties
+# Configure display names and settings for properties.
+# IMPORTANT: keys in this section must use their fully-qualified form.
+# Frontmatter properties need the `note.` prefix or the displayName is silently ignored.
 properties:
-  property_name:
+  note.property_name:        # frontmatter property — MUST prefix with `note.`
     displayName: "Display Name"
-  formula.formula_name:
+  formula.formula_name:      # formula reference — already prefixed
     displayName: "Formula Display Name"
-  file.ext:
+  file.ext:                  # file property — already prefixed
     displayName: "Extension"
 
 # Define custom summary formulas
@@ -122,6 +128,8 @@ filters:
 1. **Note properties** - From frontmatter: `note.author` or just `author`
 2. **File properties** - File metadata: `file.name`, `file.mtime`, etc.
 3. **Formula properties** - Computed values: `formula.my_formula`
+
+**Asymmetric prefix rule**: in `order`, `filters`, `groupBy`, and `sort`, a frontmatter property can be referenced bare (`author`) or prefixed (`note.author`). But in the top-level `properties:` configuration block (where `displayName` is set), frontmatter keys **must** use the `note.` prefix — bare keys are silently ignored and the raw field name will appear as the column header. See Troubleshooting for the symptom.
 
 ### File Properties Reference
 
@@ -302,7 +310,7 @@ formulas:
   priority_label: 'if(priority == 1, "🔴 High", if(priority == 2, "🟡 Medium", "🟢 Low"))'
 
 properties:
-  status:
+  note.status:
     displayName: Status
   formula.days_until_due:
     displayName: "Days Until Due"
@@ -351,7 +359,7 @@ formulas:
   year_read: 'if(finished_date, date(finished_date).year, "")'
 
 properties:
-  author:
+  note.author:
     displayName: Author
   formula.status_icon:
     displayName: ""
@@ -475,6 +483,22 @@ formulas:
 # CORRECT - guard with if()
 'if(due_date, (date(due_date) - today()).days, "")'
 ```
+
+**`displayName` ignored / column shows raw field name**: in the `properties:` configuration block, frontmatter keys must be prefixed with `note.`. Bare keys are silently ignored.
+
+```yaml
+# WRONG - displayName ignored, column header shows "status"
+properties:
+  status:
+    displayName: Status
+
+# CORRECT - column header shows "Status"
+properties:
+  note.status:
+    displayName: Status
+```
+
+This asymmetry trips users up because `order`, `filters`, and `groupBy` all accept the bare form. The `properties:` block is the exception.
 
 **Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
 
