@@ -1,3 +1,5 @@
+![obsidian-skills — five Agent Skills that teach Claude Code and Codex CLI the Obsidian vault: obsidian-markdown, obsidian-bases, json-canvas, obsidian-cli, and defuddle. Spec-compliant with agentskills.io.](assets/hero.png)
+
 Agent Skills for use with Obsidian.
 
 These skills follow the [Agent Skills specification](https://agentskills.io/specification) so they can be used by any skills-compatible agent, including Claude Code and Codex CLI.
