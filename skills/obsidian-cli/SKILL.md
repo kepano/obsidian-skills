@@ -5,24 +5,37 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 # Obsidian CLI
 
-Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+Use the `obsidian-cli` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+
+## Installation
+
+**Homebrew (macOS):**
+```bash
+brew install --cask obsidian
+```
+The CLI command will be `obsidian-cli`.
+
+**Other platforms:**
+See https://help.obsidian.md/cli for installation options. The CLI command may be `obsidian` or `obsidian-cli` depending on your installation method.
+
+> **Note:** This skill uses `obsidian-cli` as the command name. If your installation provides `obsidian` instead, you can create an alias: `alias obsidian-cli=obsidian`
 
 ## Command reference
 
-Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
+Run `obsidian-cli help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
 
 ## Syntax
 
 **Parameters** take a value with `=`. Quote values with spaces:
 
 ```bash
-obsidian create name="My Note" content="Hello world"
+obsidian-cli create name="My Note" content="Hello world"
 ```
 
 **Flags** are boolean switches with no value:
 
 ```bash
-obsidian create name="My Note" silent overwrite
+obsidian-cli create name="My Note" silent overwrite
 ```
 
 For multiline content use `\n` for newline and `\t` for tab.
@@ -39,22 +52,22 @@ Many commands accept `file` or `path` to target a file. Without either, the acti
 Commands target the most recently focused vault by default. Use `vault=<name>` as the first parameter to target a specific vault:
 
 ```bash
-obsidian vault="My Vault" search query="test"
+obsidian-cli vault="My Vault" search query="test"
 ```
 
 ## Common patterns
 
 ```bash
-obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
-obsidian append file="My Note" content="New line"
-obsidian search query="search term" limit=10
-obsidian daily:read
-obsidian daily:append content="- [ ] New task"
-obsidian property:set name="status" value="done" file="My Note"
-obsidian tasks daily todo
-obsidian tags sort=count counts
-obsidian backlinks file="My Note"
+obsidian-cli read file="My Note"
+obsidian-cli create name="New Note" content="# Hello" template="Template" silent
+obsidian-cli append file="My Note" content="New line"
+obsidian-cli search query="search term" limit=10
+obsidian-cli daily:read
+obsidian-cli daily:append content="- [ ] New task"
+obsidian-cli property:set name="status" value="done" file="My Note"
+obsidian-cli tasks daily todo
+obsidian-cli tags sort=count counts
+obsidian-cli backlinks file="My Note"
 ```
 
 Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
@@ -67,20 +80,20 @@ After making code changes to a plugin or theme, follow this workflow:
 
 1. **Reload** the plugin to pick up changes:
    ```bash
-   obsidian plugin:reload id=my-plugin
+   obsidian-cli plugin:reload id=my-plugin
    ```
 2. **Check for errors** — if errors appear, fix and repeat from step 1:
    ```bash
-   obsidian dev:errors
+   obsidian-cli dev:errors
    ```
 3. **Verify visually** with a screenshot or DOM inspection:
    ```bash
-   obsidian dev:screenshot path=screenshot.png
-   obsidian dev:dom selector=".workspace-leaf" text
+   obsidian-cli dev:screenshot path=screenshot.png
+   obsidian-cli dev:dom selector=".workspace-leaf" text
    ```
 4. **Check console output** for warnings or unexpected logs:
    ```bash
-   obsidian dev:console level=error
+   obsidian-cli dev:console level=error
    ```
 
 ### Additional developer commands
@@ -88,19 +101,19 @@ After making code changes to a plugin or theme, follow this workflow:
 Run JavaScript in the app context:
 
 ```bash
-obsidian eval code="app.vault.getFiles().length"
+obsidian-cli eval code="app.vault.getFiles().length"
 ```
 
 Inspect CSS values:
 
 ```bash
-obsidian dev:css selector=".workspace-leaf" prop=background-color
+obsidian-cli dev:css selector=".workspace-leaf" prop=background-color
 ```
 
 Toggle mobile emulation:
 
 ```bash
-obsidian dev:mobile on
+obsidian-cli dev:mobile on
 ```
 
-Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+Run `obsidian-cli help` to see additional developer commands including CDP and debugger controls.
