@@ -9,7 +9,7 @@ Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Ob
 
 ## Command reference
 
-Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
+Run `obsidian help` to see all available commands. Use `obsidian help <command>` (or `obsidian <command> --help`) for detailed help on a specific command. Full docs: https://help.obsidian.md/cli
 
 ## Syntax
 
@@ -22,17 +22,20 @@ obsidian create name="My Note" content="Hello world"
 **Flags** are boolean switches with no value:
 
 ```bash
-obsidian create name="My Note" silent overwrite
+obsidian create name="My Note" open overwrite
 ```
 
 For multiline content use `\n` for newline and `\t` for tab.
 
 ## File targeting
 
-Many commands accept `file` or `path` to target a file. Without either, the active file is used.
+Many commands accept `file` or `path` to target a file. Without either:
+- **Content commands** (`read`, `outline`, `append`, `rename`, etc.) default to the active file.
+- **List/aggregation commands** (`aliases`, `properties`, `tags`, `tasks`) default to vault-wide; use the `active` flag to scope them to the active file.
 
 - `file=<name>` — resolves like a wikilink (name only, no path or extension needed)
 - `path=<path>` — exact path from vault root, e.g. `folder/note.md`
+- `active` — scope list/aggregation commands to the active file
 
 ## Vault targeting
 
@@ -46,10 +49,15 @@ obsidian vault="My Vault" search query="test"
 
 ```bash
 obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
+obsidian create name="New Note" content="# Hello" template="Template"
+obsidian create name="New Note" content="# Hello" open  # also open in Obsidian
 obsidian append file="My Note" content="New line"
+obsidian rename file="Old Name" name="New Name"
+obsidian move path="folder/Old.md" to="other/Old.md"  # to= must include filename, not just a folder
 obsidian search query="search term" limit=10
+obsidian search:context query="search term"  # includes surrounding context
 obsidian daily:read
+obsidian daily:path                          # get expected daily note path
 obsidian daily:append content="- [ ] New task"
 obsidian property:set name="status" value="done" file="My Note"
 obsidian tasks daily todo
@@ -57,7 +65,7 @@ obsidian tags sort=count counts
 obsidian backlinks file="My Note"
 ```
 
-Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
+Commands default to **silent operation** — files are not opened in Obsidian unless you add the `open` flag. Use `--copy` on any command to copy output to clipboard. Use `total` on list commands to get a count.
 
 ## Plugin development
 
