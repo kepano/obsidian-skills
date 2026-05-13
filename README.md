@@ -54,3 +54,5 @@ OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No cha
 | [json-canvas](skills/json-canvas) | Create and edit [JSON Canvas](https://jsoncanvas.org/) files (`.canvas`) with nodes, edges, groups, and connections |
 | [obsidian-cli](skills/obsidian-cli) | Interact with Obsidian vaults via the [Obsidian CLI](https://help.obsidian.md/cli) including plugin and theme development |
 | [defuddle](skills/defuddle) | Extract clean markdown from web pages using [Defuddle](https://github.com/kepano/defuddle-cli), removing clutter to save tokens |
+| [gemini-cli](skills/gemini-cli) | Interact with the Gemini API and models via the command line |
+| [antigravity](skills/antigravity) | Advanced agentic AI coding assistant designed by Google DeepMind |
