@@ -54,3 +54,17 @@ OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No cha
 | [json-canvas](skills/json-canvas) | Create and edit [JSON Canvas](https://jsoncanvas.org/) files (`.canvas`) with nodes, edges, groups, and connections |
 | [obsidian-cli](skills/obsidian-cli) | Interact with Obsidian vaults via the [Obsidian CLI](https://help.obsidian.md/cli) including plugin and theme development |
 | [defuddle](skills/defuddle) | Extract clean markdown from web pages using [Defuddle](https://github.com/kepano/defuddle-cli), removing clutter to save tokens |
+
+## Community Skills
+
+Skills built by the community that follow the Agent Skills specification and are compatible with Claude Code, Codex CLI, and other skills-compatible agents.
+
+| Skill | Description |
+|-------|-------------|
+| [heyneuron/flowhunt-skill](https://github.com/heyneuron/flowhunt-skill) | Automation discovery audit — walks through a 5-question workflow intake and audits Gmail, Calendar, Slack, and task trackers to identify automation opportunities |
+
+Install with:
+
+```
+npx skills add heyneuron/flowhunt-skill
+```
