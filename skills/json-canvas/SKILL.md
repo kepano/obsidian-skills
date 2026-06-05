@@ -92,6 +92,16 @@ Nodes are objects placed on the canvas. Array order determines z-index: first no
 
 **Newline pitfall**: Use `\n` for line breaks in JSON strings. Do **not** use the literal `\\n` -- Obsidian renders that as the characters `\` and `n`.
 
+**Quote pitfall**: Escape double quotes inside JSON string values as `\"`. Unescaped quotes produce invalid JSON that Obsidian cannot render:
+
+```json
+// ❌ Invalid — unescaped quotes break JSON syntax
+"text": "She said "hello world""
+
+// ✅ Valid — quotes escaped
+"text": "She said \"hello world\""
+```
+
 ### File Nodes
 
 | Attribute | Required | Type | Description |
@@ -232,7 +242,7 @@ After creating or editing a canvas file, verify:
 7. Color presets are `"1"` through `"6"` or valid hex (e.g., `"#FF0000"`)
 8. JSON is valid and parseable
 
-If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped newlines in text content).
+If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped double quotes or newlines in text content).
 
 ## Complete Examples
 
