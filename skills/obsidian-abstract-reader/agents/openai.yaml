@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Abstract Reader"
+  short_description: "Read and screen PubMed abstracts into Obsidian notes."
+  default_prompt: "Use $obsidian-abstract-reader to summarize and screen this PubMed abstract."
