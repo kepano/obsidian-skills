@@ -111,6 +111,16 @@ Nodes are objects placed on the canvas. Array order determines z-index: first no
 }
 ```
 
+**File path pitfall**: If a file name contains double quotes (e.g. `He said "hello".md`), hand-writing the JSON will produce invalid output. Use a shell command with `json.dump` to build the canvas safely:
+
+```bash
+python3 -c "
+import json
+canvas = {'nodes': [{'id': 'abc1', 'type': 'file', 'x': 0, 'y': 0, 'width': 400, 'height': 300, 'file': 'He said \"hello\".md'}], 'edges': []}
+print(json.dumps(canvas, ensure_ascii=False))
+" > my.canvas
+```
+
 ### Link Nodes
 
 | Attribute | Required | Type | Description |
@@ -218,6 +228,8 @@ Generate 16-character lowercase hexadecimal strings (64-bit random value):
 | Large text | 400-600 | 300-500 |
 | File preview | 300-500 | 200-400 |
 | Link preview | 250-400 | 100-200 |
+
+> For CJK (Chinese/Japanese/Korean) text, increase suggested widths by approximately 1.5x — CJK characters are roughly twice as wide as Latin characters and need more horizontal space to avoid awkward line breaks.
 
 ## Validation Checklist
 
