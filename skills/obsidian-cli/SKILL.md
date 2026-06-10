@@ -7,6 +7,9 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+> [!warning] Not `npx obsidian-cli`
+> The npm package `obsidian-cli` (`npx obsidian-cli`) is **not** the official Obsidian CLI — it is an unrelated QA testing tool that requires `OBSIDIAN_API_KEY` and `OBSIDIAN_API_SECRET`. Use the `obsidian` command that ships with the Obsidian desktop app (Obsidian 1.7+). See https://help.obsidian.md/cli for setup.
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
