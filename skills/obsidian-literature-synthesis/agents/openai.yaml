@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian 文献知识提炼"
+  short_description: "将 Obsidian 文献笔记从初筛、精读、Zotero/PDF 管理推进到 MOC、概念页、证据矩阵和论文论点。"
+  default_prompt: "请使用 Obsidian 文献知识提炼流程，把新增文献纳入我的知识体系。"
