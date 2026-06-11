@@ -11,6 +11,8 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 /plugin install obsidian@obsidian-skills
 ```
 
+Chinese users can also search and install skills through [Skills宝](https://skilery.com).
+
 ### npx skills
 
 ```
