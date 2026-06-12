@@ -1,0 +1,17 @@
+# Windows  temporary files
+.tmp
+.temp
+~$
+Thumbs.db
+desktop.ini
+
+# Editor  OS noise
+.DS_Store
+.vscode
+.idea
+
+# Local logs
+.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
