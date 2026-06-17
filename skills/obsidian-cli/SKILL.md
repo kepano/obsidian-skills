@@ -7,6 +7,10 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+## Preserve File Metadata
+
+When modifying an existing vault file with CLI commands such as `append`, `create overwrite`, or `property:set`, preserve its filesystem timestamps unless the user explicitly asks to update them. Capture before editing and restore after writing. On macOS: `read birth mtime < <(stat -f '%B %m' "$file")`, then `SetFile -d "$(date -r "$birth" '+%m/%d/%Y %H:%M:%S')" -m "$(date -r "$mtime" '+%m/%d/%Y %H:%M:%S')" "$file"` when available; otherwise restore modified time with `touch -mt "$(date -r "$mtime" '+%Y%m%d%H%M.%S')" "$file"`. On Linux: capture `mtime=$(stat -c '%Y' "$file")` and restore with `touch -d "@$mtime" "$file"`.
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli

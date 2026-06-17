@@ -7,6 +7,10 @@ description: Create and edit Obsidian Flavored Markdown with wikilinks, embeds, 
 
 Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark and GFM with wikilinks, embeds, callouts, properties, comments, and other syntax. This skill covers only Obsidian-specific extensions -- standard Markdown (headings, bold, italic, lists, quotes, code blocks, tables) is assumed knowledge.
 
+## Preserve File Metadata
+
+When editing an existing note, preserve its filesystem timestamps unless the user explicitly asks to update them. Capture before editing and restore after writing. On macOS: `read birth mtime < <(stat -f '%B %m' "$file")`, then `SetFile -d "$(date -r "$birth" '+%m/%d/%Y %H:%M:%S')" -m "$(date -r "$mtime" '+%m/%d/%Y %H:%M:%S')" "$file"` when available; otherwise restore modified time with `touch -mt "$(date -r "$mtime" '+%Y%m%d%H%M.%S')" "$file"`. On Linux: capture `mtime=$(stat -c '%Y' "$file")` and restore with `touch -d "@$mtime" "$file"`.
+
 ## Workflow: Creating an Obsidian Note
 
 1. **Add frontmatter** with properties (title, tags, aliases) at the top of the file. See [PROPERTIES.md](references/PROPERTIES.md) for all property types.

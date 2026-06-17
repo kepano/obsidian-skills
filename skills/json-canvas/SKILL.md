@@ -5,6 +5,10 @@ description: Create and edit JSON Canvas files (.canvas) with nodes, edges, grou
 
 # JSON Canvas Skill
 
+## Preserve File Metadata
+
+When editing an existing `.canvas` file, preserve its filesystem timestamps unless the user explicitly asks to update them. Capture before editing and restore after writing. On macOS: `read birth mtime < <(stat -f '%B %m' "$file")`, then `SetFile -d "$(date -r "$birth" '+%m/%d/%Y %H:%M:%S')" -m "$(date -r "$mtime" '+%m/%d/%Y %H:%M:%S')" "$file"` when available; otherwise restore modified time with `touch -mt "$(date -r "$mtime" '+%Y%m%d%H%M.%S')" "$file"`. On Linux: capture `mtime=$(stat -c '%Y' "$file")` and restore with `touch -d "@$mtime" "$file"`.
+
 ## File Structure
 
 A canvas file (`.canvas`) contains two top-level arrays following the [JSON Canvas Spec 1.0](https://jsoncanvas.org/spec/1.0/):
