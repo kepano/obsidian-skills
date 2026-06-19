@@ -53,6 +53,9 @@ views:
     groupBy:                     # Optional: group results
       property: property_name
       direction: ASC | DESC
+    sort:                        # Optional: sort results (supports multiple properties)
+      - property: property_name
+        direction: ASC | DESC
     filters:                     # View-specific filters follow the same rules
       and:
         - 'status == "active"'
@@ -326,6 +329,11 @@ views:
     groupBy:
       property: status
       direction: ASC
+    sort:
+      - property: due
+        direction: ASC
+      - property: file.name
+        direction: ASC
     summaries:
       formula.days_until_due: Average
 
