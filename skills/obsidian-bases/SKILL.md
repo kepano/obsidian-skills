@@ -53,6 +53,9 @@ views:
     groupBy:                     # Optional: group results
       property: property_name
       direction: ASC | DESC
+    sort:                        # Optional: sort results (supports multiple properties)
+      - property: property_name
+        direction: ASC | DESC
     filters:                     # View-specific filters follow the same rules
       and:
         - 'status == "active"'
@@ -268,6 +271,35 @@ views:
     # Map-specific settings for lat/lng properties
 ```
 
+## Sorting
+
+Sort results by one or more properties. Each sort entry specifies a `property` and `direction` (`ASC` or `DESC`). Multiple sort entries are applied in order — the first entry is the primary sort key, subsequent entries break ties.
+
+```yaml
+views:
+  - type: table
+    name: "Sorted Tasks"
+    sort:
+      - property: due
+        direction: ASC
+      - property: file.name
+        direction: ASC
+    order:
+      - file.name
+      - due
+      - status
+```
+
+Sort options depend on the property type:
+
+| Property Type | ASC | DESC |
+|---------------|-----|------|
+| Text | A→Z | Z→A |
+| Number | 0→9 | 9→0 |
+| Date | Old→New | New→Old |
+
+You can sort by any property including formulas (`formula.my_formula`), file properties (`file.mtime`), and note properties.
+
 ## Default Summary Formulas
 
 | Name | Input Type | Description |
@@ -326,6 +358,11 @@ views:
     groupBy:
       property: status
       direction: ASC
+    sort:
+      - property: due
+        direction: ASC
+      - property: file.name
+        direction: ASC
     summaries:
       formula.days_until_due: Average
 
@@ -415,7 +452,9 @@ views:
 
 ## Embedding Bases
 
-Embed in Markdown files:
+### Embed a `.base` file
+
+Embed an external `.base` file in any Markdown note:
 
 ```markdown
 ![[MyBase.base]]
@@ -423,6 +462,26 @@ Embed in Markdown files:
 <!-- Specific view -->
 ![[MyBase.base#View Name]]
 ```
+
+### Embed inline with a code block
+
+Bases can also be embedded **inline** directly inside a note using a `base` fenced code block. This is useful for note-level filters (e.g. using `this.file.links`) and avoids creating a separate `.base` file:
+
+````markdown
+```base
+filters:
+  and:
+    - file.hasTag("example")
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - status
+```
+````
+
+When embedded inline this way, the `this` keyword refers to the containing note, so you can build per-note views such as showing all notes linked from the current file.
 
 ## YAML Quoting Rules
 
