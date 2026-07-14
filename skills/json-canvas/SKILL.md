@@ -92,12 +92,16 @@ Nodes are objects placed on the canvas. Array order determines z-index: first no
 
 **Newline pitfall**: Use `\n` for line breaks in JSON strings. Do **not** use the literal `\\n` -- Obsidian renders that as the characters `\` and `n`.
 
+**Quote escaping pitfall**: Double quotes inside `text` content must be escaped as `\"`. For example, the text `公司的"外交官"` must be stored as `"text": "公司的\"外交官\""`. Unescaped quotes break the JSON parse and the canvas will fail to render. When generating canvas JSON programmatically, always use a JSON serializer rather than manual string concatenation.
+
 ### File Nodes
 
 | Attribute | Required | Type | Description |
 |-----------|----------|------|-------------|
 | `file` | Yes | string | Path to file within the system |
 | `subpath` | No | string | Link to heading or block (starts with `#`) |
+
+**File path escaping**: If a file name contains double quotes, they must be escaped as `\"` in the JSON string. For example, a file named `My "Notes".md` should be referenced as `"file": "My \"Notes\".md"`.
 
 ```json
 {
@@ -211,13 +215,15 @@ Generate 16-character lowercase hexadecimal strings (64-bit random value):
 - Space nodes 50-100px apart; leave 20-50px padding inside groups
 - Align to grid (multiples of 10 or 20) for cleaner layouts
 
-| Node Type | Suggested Width | Suggested Height |
-|-----------|-----------------|------------------|
-| Small text | 200-300 | 80-150 |
-| Medium text | 300-450 | 150-300 |
-| Large text | 400-600 | 300-500 |
-| File preview | 300-500 | 200-400 |
-| Link preview | 250-400 | 100-200 |
+| Node Type | Suggested Width | Suggested Height | CJK Width (1.5x) |
+|-----------|-----------------|------------------|-------------------|
+| Small text | 200-300 | 80-150 | 300-450 |
+| Medium text | 300-450 | 150-300 | 450-675 |
+| Large text | 400-600 | 300-500 | 600-900 |
+| File preview | 300-500 | 200-400 | 450-750 |
+| Link preview | 250-400 | 100-200 | 375-600 |
+
+**CJK text sizing**: CJK characters (Chinese, Japanese, Korean) are approximately 2× wider than Latin characters. For content primarily in CJK languages, multiply the suggested width by ~1.5× to avoid cramped layouts and awkward line breaks.
 
 ## Validation Checklist
 
@@ -230,7 +236,8 @@ After creating or editing a canvas file, verify:
 5. `fromSide`/`toSide` values are one of: `top`, `right`, `bottom`, `left`
 6. `fromEnd`/`toEnd` values are one of: `none`, `arrow`
 7. Color presets are `"1"` through `"6"` or valid hex (e.g., `"#FF0000"`)
-8. JSON is valid and parseable
+8. Double quotes in `text` and `file` values are properly escaped as `\"`
+9. JSON is valid and parseable
 
 If validation fails, check for duplicate IDs, dangling edge references, or malformed JSON strings (especially unescaped newlines in text content).
 
