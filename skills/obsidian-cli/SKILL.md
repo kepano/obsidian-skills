@@ -27,6 +27,39 @@ obsidian create name="My Note" silent overwrite
 
 For multiline content use `\n` for newline and `\t` for tab.
 
+### Multiline content with heredoc
+
+For content with multiple lines, quotes, backticks, wikilinks, or special characters, use a heredoc to avoid shell escaping issues:
+
+```bash
+obsidian create path="My Note.md" silent content="$(cat << 'EOF'
+---
+tags: [example]
+type: reference
+---
+
+# My Note
+
+Some content with `backticks`, [[wikilinks]], and **markdown** all safe.
+
+```yaml
+key: value
+```
+
+More content here.
+EOF
+)"
+```
+
+The single-quoted `'EOF'` delimiter prevents variable expansion and backslash interpretation by the shell.
+
+### LaTeX and backslash escaping
+
+The CLI interprets `\t`, `\n`, and other backslash escape sequences in content strings. This corrupts LaTeX formulas — `\times` becomes `[tab]imes`. To pass LaTeX through unchanged:
+
+- Use a heredoc with a single-quoted delimiter (shown above)
+- Or write content to a file first and pipe it: `obsidian create path="Note.md" content="$(cat note_content.md)"`
+
 ## File targeting
 
 Many commands accept `file` or `path` to target a file. Without either, the active file is used.
