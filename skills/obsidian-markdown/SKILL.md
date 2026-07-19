@@ -175,8 +175,8 @@ This project aims to [[improve workflow]] using modern techniques.
 
 - [x] Initial planning
 - [ ] Development phase
-  - [ ] Backend implementation
-  - [ ] Frontend design
+    - [ ] Backend implementation
+    - [ ] Frontend design
 
 ## Notes
 
