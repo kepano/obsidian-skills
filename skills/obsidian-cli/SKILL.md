@@ -22,8 +22,10 @@ obsidian create name="My Note" content="Hello world"
 **Flags** are boolean switches with no value:
 
 ```bash
-obsidian create name="My Note" silent overwrite
+obsidian create name="My Note" open overwrite
 ```
+
+Opening is opt-in: pass `open` (or `newtab` where supported) when you want the file to open. There is no `silent` flag.
 
 For multiline content use `\n` for newline and `\t` for tab.
 
@@ -46,7 +48,8 @@ obsidian vault="My Vault" search query="test"
 
 ```bash
 obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
+obsidian create name="New Note" content="# Hello" template="Template"
+obsidian create name="New Note" content="# Hello" open  # also open in Obsidian
 obsidian append file="My Note" content="New line"
 obsidian search query="search term" limit=10
 obsidian daily:read
@@ -57,7 +60,16 @@ obsidian tags sort=count counts
 obsidian backlinks file="My Note"
 ```
 
-Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
+Use `total` on list commands to get a count.
+
+**Output options placement:** `--copy`, `--json`, `--md`, `--tsv`, and `--csv` only work **after** the command name. Putting them before the command (or before `vault=`) fails — often as `Command "--copy" not found` — because the first token is treated as the command. Prefer `vault=` first when used; put double-dash options last:
+
+```bash
+obsidian tasks todo total --copy
+obsidian vault="My Vault" search query="TODO" --copy
+obsidian tasks todo format=json   # many list commands also accept format=
+# Wrong: obsidian --copy vault="My Vault" tasks todo
+```
 
 ## Plugin development
 
