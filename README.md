@@ -14,13 +14,13 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 ### npx skills
 
 ```
-npx skills add git@github.com:kepano/obsidian-skills.git
-```
-
-Instead of ssh, if you prefer to use https:
-
-```
 npx skills add https://github.com/kepano/obsidian-skills
+```
+
+Instead of https, if you prefer to use ssh:
+
+```
+npx skills add git@github.com:kepano/obsidian-skills.git
 ```
 
 ### Manually
