@@ -8,6 +8,7 @@
 | `duration()` | `duration(string): duration` | Parse duration string |
 | `now()` | `now(): date` | Current date and time |
 | `today()` | `today(): date` | Current date (time = 00:00:00) |
+| `random()` | `random(): number` | Random number from 0 to 1; refreshes whenever a view loads |
 | `if()` | `if(condition, trueResult, falseResult?)` | Conditional |
 | `min()` | `min(n1, n2, ...): number` | Smallest number |
 | `max()` | `max(n1, n2, ...): number` | Largest number |
@@ -40,33 +41,23 @@
 | `relative()` | `date.relative(): string` | Human-readable relative time |
 | `isEmpty()` | `date.isEmpty(): boolean` | Always false for dates |
 
-## Duration Type
+## Date Differences and Duration Values
 
-When subtracting two dates, the result is a **Duration** type (not a number). Duration has its own properties and methods.
-
-**Duration Fields:**
-| Field | Type | Description |
-|-------|------|-------------|
-| `duration.days` | Number | Total days in duration |
-| `duration.hours` | Number | Total hours in duration |
-| `duration.minutes` | Number | Total minutes in duration |
-| `duration.seconds` | Number | Total seconds in duration |
-| `duration.milliseconds` | Number | Total milliseconds in duration |
-
-**IMPORTANT:** Duration does NOT support `.round()`, `.floor()`, `.ceil()` directly. You must access a numeric field first (like `.days`), then apply number functions.
+Subtracting two date objects returns a number of milliseconds. Convert the number explicitly before applying number functions.
 
 ```yaml
-# CORRECT: Calculate days between dates
-"(date(due_date) - today()).days"                    # Returns number of days
-"(now() - file.ctime).days"                          # Days since created
+# Milliseconds between dates
+"date(due_date) - today()"
 
-# CORRECT: Round the numeric result if needed
-"(date(due_date) - today()).days.round(0)"           # Rounded days
-"(now() - file.ctime).hours.round(0)"                # Rounded hours
+# Days between dates
+"(date(due_date) - today()) / 86400000"
 
-# WRONG - will cause error:
-# "((date(due) - today()) / 86400000).round(0)"      # Duration doesn't support division then round
+# Rounded days or hours
+"((date(due_date) - today()) / 86400000).round(0)"
+"((now() - file.ctime) / 3600000).round(0)"
 ```
+
+`duration(string)` creates a duration value for date arithmetic or scaling, for example `now() + (duration('1d') * 2)`. When multiplying a duration by a scalar, keep the duration on the left.
 
 ## Date Arithmetic
 
@@ -80,10 +71,10 @@ When subtracting two dates, the result is a **Duration** type (not a number). Du
 "now() + \"1 day\""       # Tomorrow
 "today() + \"7d\""        # A week from today
 
-# Subtract dates returns Duration type
-"now() - file.ctime"                    # Returns Duration
-"(now() - file.ctime).days"             # Get days as number
-"(now() - file.ctime).hours"            # Get hours as number
+# Subtract dates returns milliseconds
+"now() - file.ctime"                    # Milliseconds
+"(now() - file.ctime) / 86400000"       # Days
+"(now() - file.ctime) / 3600000"        # Hours
 
 # Complex duration arithmetic
 "now() + (duration('1d') * 2)"

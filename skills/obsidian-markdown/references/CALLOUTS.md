@@ -52,7 +52,22 @@
 
 ```css
 .callout[data-callout="custom-type"] {
-  --callout-color: 255, 0, 0;
+  --callout-color: #ff0000;
   --callout-icon: lucide-alert-circle;
+}
+```
+
+Since Obsidian 1.13, `--callout-color` must be a valid CSS color such as a hex value, `rgb()`, or CSS variable. Raw comma-separated RGB triplets are no longer valid.
+
+Callouts also support normal CSS selectors and additional variables. For example:
+
+```css
+.callout[data-callout="custom-type"] {
+  --callout-border-width: 2px;
+  --callout-border-opacity: 0.25;
+}
+
+.callout[data-callout="custom-type"] .callout-title {
+  display: none;
 }
 ```

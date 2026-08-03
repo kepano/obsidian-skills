@@ -30,6 +30,15 @@
 ![[audio.ogg]]
 ```
 
+## Embed Video
+
+```markdown
+![[video.mp4]]
+![[video.webm]]
+```
+
+Rendering depends on codecs available on the device.
+
 ## Embed PDF
 
 ```markdown
@@ -44,6 +53,27 @@
 ![[BaseFile.base]]
 ![[BaseFile.base#View Name]]
 ```
+
+An inline Base definition can also be embedded directly in a Markdown note:
+
+````markdown
+```base
+filters:
+  and:
+    - file.hasTag("example")
+views:
+  - type: table
+    name: Table
+```
+````
+
+## Embed Canvas
+
+```markdown
+![[My canvas.canvas]]
+```
+
+Embedded canvases show shapes but not the text inside cards. Open the Canvas directly for the full interactive content.
 
 ## Embed Lists
 

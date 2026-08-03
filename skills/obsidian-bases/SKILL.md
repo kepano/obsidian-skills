@@ -167,11 +167,11 @@ formulas:
   # Date formatting
   created: 'file.ctime.format("YYYY-MM-DD")'
 
-  # Calculate days since created (use .days for Duration)
-  days_old: '(now() - file.ctime).days'
+  # Date subtraction returns milliseconds; divide to convert to days
+  days_old: '((now() - file.ctime) / 86400000).floor()'
 
   # Calculate days until due date
-  days_until_due: 'if(due_date, (date(due_date) - today()).days, "")'
+  days_until_due: 'if(due_date, ((date(due_date) - today()) / 86400000).ceil(), "")'
 ```
 
 ## Key Functions
@@ -187,24 +187,24 @@ Most commonly used functions. For the complete reference of all types (Date, Str
 | `duration()` | `duration(string): duration` | Parse duration string |
 | `file()` | `file(path): file` | Get file object |
 | `link()` | `link(path, display?): Link` | Create a link |
+| `random()` | `random(): number` | Random number from 0 to 1; refreshes when a view loads |
 
-### Duration Type
+### Dates and Durations
 
-When subtracting two dates, the result is a **Duration** type (not a number).
-
-**Duration Fields:** `duration.days`, `duration.hours`, `duration.minutes`, `duration.seconds`, `duration.milliseconds`
-
-**IMPORTANT:** Duration does NOT support `.round()`, `.floor()`, `.ceil()` directly. Access a numeric field first (like `.days`), then apply number functions.
+Subtracting two date objects returns a **number of milliseconds**. Convert explicitly when a formula needs days or hours.
 
 ```yaml
-# CORRECT: Calculate days between dates
-"(date(due_date) - today()).days"                    # Returns number of days
-"(now() - file.ctime).days"                          # Days since created
-"(date(due_date) - today()).days.round(0)"           # Rounded days
+# Milliseconds between two dates
+"date(due_date) - today()"
 
-# WRONG - will cause error:
-# "((date(due) - today()) / 86400000).round(0)"      # Duration doesn't support division then round
+# Days between two dates
+"(date(due_date) - today()) / 86400000"
+
+# Rounded days
+"((date(due_date) - today()) / 86400000).round(0)"
 ```
+
+The `duration()` function parses values such as `"1d"` for adding, subtracting, or scaling durations. It does not mean that date subtraction returns a Duration object.
 
 ### Date Arithmetic
 
@@ -213,8 +213,9 @@ When subtracting two dates, the result is a **Duration** type (not a number).
 #                 w/week/weeks, h/hour/hours, m/minute/minutes, s/second/seconds
 "now() + \"1 day\""       # Tomorrow
 "today() + \"7d\""        # A week from today
-"now() - file.ctime"      # Returns Duration
-"(now() - file.ctime).days"  # Get days as number
+"now() - file.ctime"        # Milliseconds since creation
+"(now() - file.ctime) / 86400000"  # Days since creation
+"now() + (duration('1d') * 2)"      # Two days from now
 ```
 
 ## View Types
@@ -246,6 +247,8 @@ views:
       - description
 ```
 
+In Obsidian's view settings, configure card size, image property, image fit (`cover` or `contain`), and image aspect ratio. The image property may be a local attachment link, an external URL, or a hex color.
+
 ### List View
 
 ```yaml
@@ -257,9 +260,11 @@ views:
       - status
 ```
 
+List settings include marker style, indented properties, and separators.
+
 ### Map View
 
-Requires latitude/longitude properties and the Maps community plugin.
+Requires Obsidian 1.10+ and the official Maps community plugin. Configure a coordinates property as either `"lat, lng"` text or a two-item list. If latitude and longitude are separate properties, combine them with `[latitude, longitude]`. Optional marker icon and color properties accept Lucide icon names and valid CSS colors.
 
 ```yaml
 views:
@@ -299,7 +304,7 @@ filters:
     - 'file.ext == "md"'
 
 formulas:
-  days_until_due: 'if(due, (date(due) - today()).days, "")'
+  days_until_due: 'if(due, ((date(due) - today()) / 86400000).ceil(), "")'
   is_overdue: 'if(due, date(due) < today() && status != "done", false)'
   priority_label: 'if(priority == 1, "🔴 High", if(priority == 2, "🟡 Medium", "🟢 Low"))'
 
@@ -424,6 +429,19 @@ Embed in Markdown files:
 ![[MyBase.base#View Name]]
 ```
 
+Embed a Base definition directly in a Markdown note with a `base` code block:
+
+````markdown
+```base
+filters:
+  and:
+    - file.hasTag("example")
+views:
+  - type: table
+    name: Table
+```
+````
+
 ## YAML Quoting Rules
 
 - Use single quotes for formulas containing double quotes: `'if(done, "Yes", "No")'`
@@ -458,24 +476,24 @@ formulas:
 
 ### Common Formula Errors
 
-**Duration math without field access**: Subtracting dates returns a Duration, not a number. Always access `.days`, `.hours`, etc.
+**Date differences without unit conversion**: Subtracting dates returns milliseconds. Divide by the appropriate unit before rounding.
 
 ```yaml
-# WRONG - Duration is not a number
+# WRONG - rounds milliseconds, not days
 "(now() - file.ctime).round(0)"
 
-# CORRECT - access .days first, then round
-"(now() - file.ctime).days.round(0)"
+# CORRECT - convert milliseconds to days, then round
+"((now() - file.ctime) / 86400000).round(0)"
 ```
 
 **Missing null checks**: Properties may not exist on all notes. Use `if()` to guard.
 
 ```yaml
 # WRONG - crashes if due_date is empty
-"(date(due_date) - today()).days"
+"(date(due_date) - today()) / 86400000"
 
 # CORRECT - guard with if()
-'if(due_date, (date(due_date) - today()).days, "")'
+'if(due_date, ((date(due_date) - today()) / 86400000).ceil(), "")'
 ```
 
 **Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.

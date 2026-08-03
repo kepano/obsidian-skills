@@ -5,7 +5,7 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 # Obsidian CLI
 
-Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+Use the `obsidian` CLI to automate Obsidian. It requires the Obsidian 1.12 installer or newer and must be enabled under **Settings → General → Command line interface**. A command launches Obsidian when the app is not already running; use Obsidian Headless for unattended Sync or Publish workflows that must not depend on the desktop app.
 
 ## Command reference
 
@@ -36,7 +36,7 @@ Many commands accept `file` or `path` to target a file. Without either, the acti
 
 ## Vault targeting
 
-Commands target the most recently focused vault by default. Use `vault=<name>` as the first parameter to target a specific vault:
+If the terminal's current working directory is inside a vault, commands target that vault. Otherwise they target the active vault. Use `vault=<name>` or `vault=<id>` as the first parameter to target a specific vault:
 
 ```bash
 obsidian vault="My Vault" search query="test"
@@ -56,6 +56,10 @@ obsidian tasks daily todo
 obsidian tags sort=count counts
 obsidian backlinks file="My Note"
 ```
+
+Current command groups also cover Bases (`bases`, `base:views`, `base:create`, `base:query`), file history, bookmarks, links, plugins, Publish, Sync, templates, themes, workspaces, and developer tooling. Run `obsidian help <command>` before using an unfamiliar or state-changing command.
+
+For destructive commands such as `delete`, `plugin:uninstall`, `theme:uninstall`, `workspace:delete`, history restore, or publishing changes, identify the exact vault and target first and follow the active confirmation policy.
 
 Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
 

@@ -16,7 +16,7 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 5. **Add callouts** for highlighted information using `> [!type]` syntax. See [CALLOUTS.md](references/CALLOUTS.md) for all callout types.
 6. **Verify** the note renders correctly in Obsidian's reading view.
 
-> When choosing between wikilinks and Markdown links: use `[[wikilinks]]` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
+> Obsidian supports both Wikilinks and Markdown links for internal files. Preserve the vault's configured link style. Use ordinary Markdown links for external URLs. When interoperability matters, prefer Markdown internal links with URL-encoded destinations.
 
 ## Internal Links (Wikilinks)
 
@@ -26,7 +26,11 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 [[Note Name#Heading]]                  Link to heading
 [[Note Name#^block-id]]                Link to block
 [[#Heading in same note]]              Same-note heading link
+[[Projects/Note Name]]                 Folder path from vault root
+[Note Name](Projects/Note%20Name.md)   Markdown-format internal link
 ```
+
+Folder paths use forward slashes even on Windows. When a link includes a folder path and targets a note that does not exist, Obsidian creates the note at that path instead of using the default new-note location.
 
 Define a block ID by appending `^block-id` to any paragraph:
 
@@ -52,9 +56,12 @@ Prefix any wikilink with `!` to embed its content inline:
 ![[image.png]]                         Embed image
 ![[image.png|300]]                     Embed image with width
 ![[document.pdf#page=3]]               Embed PDF page
+![[video.mp4]]                          Embed supported video
+![[My canvas.canvas]]                   Embed Canvas shapes
+![[My base.base#View Name]]             Embed a specific Base view
 ```
 
-See [EMBEDS.md](references/EMBEDS.md) for audio, video, search embeds, and external images.
+See [EMBEDS.md](references/EMBEDS.md) for audio, video, Canvas, Bases, search embeds, and external images.
 
 ## Callouts
 

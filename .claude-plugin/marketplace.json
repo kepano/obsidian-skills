@@ -8,8 +8,8 @@
     {
       "name": "obsidian",
       "source": "./",
-      "description": "Claude Skills for Obsidian",
-      "version": "1.0.1"
+      "description": "Documentation-reviewed skills for Obsidian files and workflows",
+      "version": "1.1.0"
     }
   ]
 }

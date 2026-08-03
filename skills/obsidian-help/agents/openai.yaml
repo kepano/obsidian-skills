@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Help"
+  short_description: "Navigate current official Obsidian workflows."
+  default_prompt: "Use the official Obsidian documentation map to solve this vault or app workflow."
