@@ -7,6 +7,24 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+## Platform setup
+
+> [!info] WSL / Windows
+> When invoking from WSL, point your wrapper at `Obsidian.com` (the Electron console stub), not `Obsidian.exe`. The `.exe` is a GUI-subsystem binary and silently drops stdout/stderr, so subcommands appear to succeed but produce no output:
+>
+> ```bash
+> # ~/bin/obsidian
+> "/mnt/c/Program Files/Obsidian/Obsidian.com" "$@"
+> ```
+
+> [!info] Headless Linux
+> On Linux without a display (servers, Docker, CI), run Obsidian under Xvfb and set `DISPLAY` to match:
+>
+> ```bash
+> Xvfb :99 -screen 0 1024x768x24 &
+> DISPLAY=:99 obsidian version
+> ```
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
