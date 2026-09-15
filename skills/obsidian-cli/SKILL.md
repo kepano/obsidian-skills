@@ -27,6 +27,26 @@ obsidian create name="My Note" silent overwrite
 
 For multiline content use `\n` for newline and `\t` for tab.
 
+## Writing Complex Content
+
+For code blocks, special characters, or multiline text, use single quotes to avoid escaping issues:
+
+```bash
+obsidian create name="My Note" content='# Title
+
+```javascript
+function hello() {
+    console.log("Hello!");
+}
+```
+
+- Item with $variable
+- Item with "quotes"
+'
+```
+
+**Note:** If your content contains single quotes (`'`), escape them as `'\''` inside the single-quoted string. For example: `content='It'\''s working'`
+
 ## File targeting
 
 Many commands accept `file` or `path` to target a file. Without either, the active file is used.
