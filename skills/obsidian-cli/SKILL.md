@@ -42,6 +42,14 @@ Commands target the most recently focused vault by default. Use `vault=<name>` a
 obsidian vault="My Vault" search query="test"
 ```
 
+If the user has not specified a vault and the task spans multiple commands, first check how many vaults are available:
+
+```bash
+obsidian vaults
+```
+
+If more than one vault is listed, ask the user which vault to use before proceeding. If only one vault exists, use it directly without asking.
+
 ## Common patterns
 
 ```bash
