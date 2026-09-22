@@ -27,6 +27,15 @@ obsidian create name="My Note" silent overwrite
 
 For multiline content use `\n` for newline and `\t` for tab.
 
+**Backslash pitfall**: The CLI interprets backslash sequences (`\n`, `\t`, etc.) in `content=` values before writing to disk. Content with LaTeX or other backslash usage is silently corrupted — for example, `\times` becomes a tab followed by `imes`. Use `\\` for a literal backslash (`\\times` → `\times`). For content with many backslashes, write to a temp file and pipe it in:
+
+```bash
+cat > /tmp/note.md << 'EOF'
+The formula $\alpha + \beta = \gamma$ and $\times$ are preserved.
+EOF
+obsidian append file="My Note" content="$(cat /tmp/note.md)"
+```
+
 ## File targeting
 
 Many commands accept `file` or `path` to target a file. Without either, the active file is used.
