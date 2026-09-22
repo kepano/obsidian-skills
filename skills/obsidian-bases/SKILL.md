@@ -415,7 +415,7 @@ views:
 
 ## Embedding Bases
 
-Embed in Markdown files:
+Embed an external `.base` file in any Markdown note:
 
 ```markdown
 ![[MyBase.base]]
@@ -423,6 +423,24 @@ Embed in Markdown files:
 <!-- Specific view -->
 ![[MyBase.base#View Name]]
 ```
+
+Bases can also be embedded **inline** directly inside a note using a `base` fenced code block. This is useful for note-level filters (e.g. `this.file.links`) and avoids creating a separate `.base` file:
+
+````markdown
+```base
+filters:
+  and:
+    - file.hasTag("example")
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - status
+```
+````
+
+When embedded this way, the `this` keyword refers to the containing note, so you can build per-note views such as showing all notes linked from the current file.
 
 ## YAML Quoting Rules
 
