@@ -27,6 +27,7 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 [[Note Name#^block-id]]                Link to block
 [[#Heading in same note]]              Same-note heading link
 ```
+Inside Markdown tables, escape wikilink alias pipes as `[[Note\|Alias]]` so the alias separator is not parsed as a table cell delimiter.
 
 Define a block ID by appending `^block-id` to any paragraph:
 
