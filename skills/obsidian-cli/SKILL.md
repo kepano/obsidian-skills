@@ -5,7 +5,7 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 # Obsidian CLI
 
-Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open. See [Platform-Specific Notes](#platform-specific-notes) below for WSL and headless Linux guidance.
 
 ## Command reference
 
@@ -41,6 +41,16 @@ Commands target the most recently focused vault by default. Use `vault=<name>` a
 ```bash
 obsidian vault="My Vault" search query="test"
 ```
+
+### Multi-vault discovery
+
+When multiple vaults are open, do not rely on the default vault — always specify `vault=<name>`. To discover available vaults:
+
+```bash
+obsidian vaults
+```
+
+If the user has more than one vault, ask which vault they want to work with and include `vault=<name>` in all subsequent commands for the session.
 
 ## Common patterns
 
@@ -104,3 +114,31 @@ obsidian dev:mobile on
 ```
 
 Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+
+## Platform-Specific Notes
+
+### WSL (Windows Subsystem for Linux)
+
+On WSL, calling the Windows Obsidian binary directly (e.g., `Obsidian.exe`) will silently produce no stdout — exit code is 0 but all output is swallowed. Use `Obsidian.com` instead:
+
+```bash
+"/mnt/c/Program Files/Obsidian/Obsidian.com" version
+"/mnt/c/Program Files/Obsidian/Obsidian.com" search query="test"
+```
+
+The `.com` variant correctly flushes stdout/stderr to the terminal. The `.exe` variant does not.
+
+### Headless Linux (Xvfb)
+
+On headless Linux (servers, Docker, CI agents), the CLI requires `DISPLAY` to be set to the Xvfb display so it can find Obsidian's IPC socket. Without it, every command fails with "The CLI is unable to find Obsidian."
+
+```bash
+# Start Xvfb if not already running
+Xvfb :99 -screen 0 1024x768x24 &
+export DISPLAY=:99
+
+# Now the CLI can communicate with Obsidian
+obsidian read file="My Note"
+```
+
+Verify the display is set: `echo $DISPLAY` should show `:99` (or similar).
