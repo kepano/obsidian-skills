@@ -100,7 +100,7 @@ See [PROPERTIES.md](references/PROPERTIES.md) for all property types, tag syntax
 #nested/tag             Nested tag with hierarchy
 ```
 
-Tags can contain letters, numbers (not first character), underscores, hyphens, and forward slashes. Tags can also be defined in frontmatter under the `tags` property.
+Tags can contain letters, numbers, underscores, hyphens, and forward slashes, but must include at least one non-numerical character (`#1984` is invalid, `#1984book` is valid). Tags can also be defined in frontmatter under the `tags` property.
 
 ## Comments
 
