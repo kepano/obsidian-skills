@@ -7,9 +7,9 @@
   "plugins": [
     {
       "name": "obsidian",
-      "source": "./",
+      "source": "./plugins/obsidian",
       "description": "Claude Skills for Obsidian",
-      "version": "1.0.1"
+      "version": "1.0.3"
     }
   ]
 }

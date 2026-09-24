@@ -1,0 +1,30 @@
+{
+  "name": "obsidian",
+  "version": "1.0.3",
+  "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas.",
+  "author": {
+    "name": "Steph Ango",
+    "url": "https://stephango.com/"
+  },
+  "homepage": "https://github.com/kepano/obsidian-skills",
+  "repository": "https://github.com/kepano/obsidian-skills",
+  "license": "MIT",
+  "keywords": ["obsidian", "markdown", "bases", "canvas", "pkm", "notes"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Obsidian",
+    "shortDescription": "Skills for working with Obsidian vaults",
+    "longDescription": "Create and edit Obsidian Markdown, Bases, and Canvas files, interact with vaults through the Obsidian CLI, and extract clean Markdown from web pages.",
+    "developerName": "kepano",
+    "category": "Productivity",
+    "capabilities": ["Write", "Review", "Automation"],
+    "defaultPrompt": [
+      "Create an Obsidian note with valid properties and wikilinks.",
+      "Build an Obsidian Base for these notes.",
+      "Inspect and update this Obsidian vault."
+    ],
+    "brandColor": "#7852EE",
+    "composerIcon": "./assets/obsidian-logo-gradient.svg",
+    "logo": "./assets/obsidian-logo-gradient.svg"
+  }
+}
