@@ -39,3 +39,29 @@ defuddle parse <url> -p domain
 | `--json` | JSON with both HTML and markdown |
 | (none) | HTML |
 | `-p <name>` | Specific metadata property |
+
+## Handling slow or unresponsive URLs
+
+The `defuddle` CLI has no built-in fetch timeout, so a slow or hung server can stall the call indefinitely. Always wrap the invocation with a shell-level timeout. **Default: 30 seconds.**
+
+Linux / macOS / git-bash:
+
+```bash
+timeout 30 defuddle parse <url> --md
+```
+
+PowerShell (Windows):
+
+```powershell
+$job = Start-Job { defuddle parse <url> --md }
+if (Wait-Job $job -Timeout 30) { Receive-Job $job } else { Stop-Job $job; Write-Error "defuddle timed out after 30s" }
+Remove-Job $job -Force
+```
+
+If `timeout` exits with code 124 (Linux/macOS) or the PowerShell branch errors, treat the URL as unfetchable and fall back to `WebFetch` or report the failure to the user. Do not retry silently — a hung URL on retry will hang again.
+
+Override the default for known-slow sources (long PDFs, large pages):
+
+```bash
+timeout 60 defuddle parse <url> --md
+```
