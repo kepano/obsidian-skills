@@ -7,6 +7,23 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+## Sandbox and IPC troubleshooting
+
+Obsidian CLI communicates with the running desktop application through IPC. In a sandboxed execution environment (for example Codex `workspace-write`), commands may report that Obsidian cannot be found even when the application is running:
+
+```text
+The CLI is unable to find Obsidian. Please make sure Obsidian is running and try again.
+```
+
+If a command returns that error:
+
+1. Check for the Obsidian main process before concluding that the app is closed (for example `ps` looking for `Obsidian.app` / `Obsidian`).
+2. If the process exists, treat this as a possible sandbox/IPC restriction and retry the necessary **read-only** command outside the sandbox with scoped approval.
+3. Do **not** request a broad approval rule for all `obsidian` commands — the CLI includes mutating operations (delete, plugin install, etc.).
+4. Run Obsidian CLI commands sequentially (not in parallel).
+5. Note that `obsidian vaults` may still succeed inside the sandbox by reading local vault registration; success there does not prove IPC works.
+6. For simple file inventory tasks, direct filesystem inspection may be used as a fallback when Obsidian-specific semantics are not required.
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
