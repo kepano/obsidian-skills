@@ -9,6 +9,8 @@ Use Defuddle CLI to extract clean readable content from web pages. Prefer over W
 
 If not installed: `npm install -g defuddle`
 
+Alternatively without installation: `npx -y defuddle`
+
 ## Usage
 
 Always use `--md` for markdown output:
