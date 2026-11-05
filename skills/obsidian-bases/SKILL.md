@@ -7,7 +7,7 @@ description: Create and edit Obsidian Bases (.base files) with views, filters, f
 
 ## Prerequisite
 
-Bases is a **core plugin** introduced in Obsidian v1.9, but it is **not always enabled by default** — particularly in vaults that predate v1.9. If `.base` files don't appear in the file tree or won't render, check that `.obsidian/core-plugins.json` contains `"bases": true`. Enable via Settings → Core plugins → Bases, or edit the JSON and reload the vault.
+Bases is a **core plugin** introduced in Obsidian v1.9, but it is **not always enabled by default** — particularly in vaults that predate v1.9. If `.base` files do not render as a database, enable Bases via Settings → Core plugins → Bases.
 
 ## Workflow
 
@@ -362,7 +362,7 @@ properties:
   note.author:
     displayName: Author
   formula.status_icon:
-    displayName: ""
+    displayName: "Status"
   formula.reading_time:
     displayName: "Est. Time"
 
@@ -499,6 +499,8 @@ properties:
 ```
 
 This asymmetry trips users up because `order`, `filters`, and `groupBy` all accept the bare form. The `properties:` block is the exception.
+
+**Empty `displayName` does not hide a table header**: `displayName: ""` falls back to the property name, just like omitting `displayName`. For example, `formula.status_icon` displays `status_icon`. Use a non-empty name such as `displayName: "Status"` to customize the header.
 
 **Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
 

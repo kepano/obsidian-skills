@@ -11,7 +11,7 @@ Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Ob
 
 The `obsidian` binary ships with the **installer**, not with the auto-updated asar bundle. If `which obsidian` returns nothing, the user is most likely missing one of these:
 
-1. **Installer is too old.** Obsidian on macOS has two version numbers: the asar bundle (shown in Settings → About) auto-updates, but the installer at `/Applications/Obsidian.app` does **not**. The in-app "check for updates" only covers the asar — it can report "you are on the latest version" while the installer is multiple versions behind. CLI binary requires installer ≥ 1.10. Check via:
+1. **Installer is too old.** Obsidian on macOS has two version numbers: the asar bundle (shown in Settings → About) auto-updates, but the installer at `/Applications/Obsidian.app` does **not**. The in-app "check for updates" only covers the asar — it can report "you are on the latest version" while the installer is multiple versions behind. The [official CLI installation guide](https://help.obsidian.md/cli) requires the 1.12 installer and recommends 1.12.7 or later. Check via:
 
    ```bash
    defaults read /Applications/Obsidian.app/Contents/Info.plist CFBundleShortVersionString
@@ -19,7 +19,7 @@ The `obsidian` binary ships with the **installer**, not with the auto-updated as
 
    If old, download the latest from <https://obsidian.md/download> and reinstall (vault data is unaffected).
 
-2. **CLI not enabled.** Settings → General → Advanced → toggle "Enable command line interface" ON. This installs the shim to `/usr/local/bin/`.
+2. **CLI not enabled.** Settings → General → enable **Command line interface**, then follow the prompt to register the CLI.
 
 3. **PATH not refreshed.** Open a new terminal after enabling.
 
@@ -38,10 +38,10 @@ If all three succeed, the CLI is ready.
 When the CLI cannot be installed (older Obsidian, restricted host, etc.), most vault operations are still doable via direct file access:
 
 - Read / edit notes: read or edit the `.md` file directly
-- Toggle core plugins: edit `.obsidian/core-plugins.json` and ask the user to reload (`Cmd+P → Reload app without saving`)
+- Toggle core plugins: use Settings → Core plugins
 - Open a file: `open "obsidian://open?vault=<name>&file=<url-encoded-path>"`
 
-Note: direct file edits won't trigger Obsidian's index refresh until the vault reloads.
+Allow Obsidian to detect external file changes before querying the updated content.
 
 ## Command reference
 
