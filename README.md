@@ -46,7 +46,7 @@ npx skills add https://github.com/kepano/obsidian-skills
 
 #### Claude Code
 
-Add the contents of this repo to a `/.claude` folder in the root of your Obsidian vault (or whichever folder you're using with Claude Code). See more in the [official Claude Skills documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+Copy the `plugins/obsidian/skills/` directory to `.claude/skills/` in the root of your Obsidian vault (or whichever folder you're using with Claude Code). See more in the [official Claude Skills documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
 
 #### Codex
 
@@ -60,16 +60,16 @@ Clone the entire repo into the OpenCode skills directory (`~/.opencode/skills/`)
 git clone https://github.com/kepano/obsidian-skills.git ~/.opencode/skills/obsidian-skills
 ```
 
-Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/obsidian-skills/skills/<skill-name>/SKILL.md`.
+Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/obsidian-skills/plugins/obsidian/skills/<skill-name>/SKILL.md`.
 
 OpenCode auto-discovers all `SKILL.md` files under `~/.opencode/skills/`. No changes to `opencode.json` or any config file are needed. Skills become available after restarting OpenCode.
 
 ## Release maintenance
 
-Update the plugin version across Claude and Codex metadata with:
+Update the plugin version in every manifest with:
 
 ```sh
-./scripts/bump-version.sh patch
+./scripts/bump.sh patch
 ```
 
 The script also accepts `major`, `minor`, or an explicit version like `1.1.0`.

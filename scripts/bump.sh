@@ -7,8 +7,8 @@ if [[ $# -ne 1 ]]; then
 fi
 
 files=(
+  "plugins/obsidian/plugin.json"
   "plugins/obsidian/.claude-plugin/plugin.json"
-  "plugins/obsidian/.codex-plugin/plugin.json"
   ".claude-plugin/marketplace.json"
 )
 

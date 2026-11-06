@@ -6,6 +6,7 @@
     "name": "Obsidian",
     "url": "https://obsidian.md/"
   },
+  "homepage": "https://obsidian.md/",
   "repository": "https://github.com/kepano/obsidian-skills",
   "license": "MIT",
   "keywords": [
@@ -15,5 +16,6 @@
     "canvas",
     "pkm",
     "notes"
-  ]
+  ],
+  "icon": "./assets/icon.png"
 }

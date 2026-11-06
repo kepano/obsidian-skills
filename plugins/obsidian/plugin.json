@@ -1,0 +1,64 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "obsidian",
+  "version": "1.1.0",
+  "description": "Work with local Obsidian vaults using the Obsidian CLI and skills for Markdown, Bases, Canvas, web extraction, and templates.",
+  "author": {
+    "name": "Obsidian",
+    "url": "https://obsidian.md/"
+  },
+  "homepage": "https://obsidian.md/",
+  "repository": "https://github.com/kepano/obsidian-skills",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "markdown",
+    "bases",
+    "canvas",
+    "pkm",
+    "notes"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Obsidian",
+        "shortDescription": "Work with your local vault",
+        "longDescription": "Search, read, create, and organize notes in a local Obsidian vault. Create and edit Obsidian Markdown with links, properties, and callouts. This plugin also lets you build Bases views, Canvas diagrams, extract web pages to Markdown, and render templates.\n\nThis plugin is currently desktop-only and requires Obsidian to be open and running with the CLI enabled. In the future we will add MCP so you can interact with your vault remotely and in the ChatGPT mobile app.",
+        "category": "Productivity",
+        "developerName": "Obsidian",
+        "defaultPrompt": [
+          "Find notes about my current project and summarize the open tasks.",
+          "Create a reading list Base from the books in my vault.",
+          "Make a Canvas connecting the main ideas in these notes."
+        ],
+        "websiteURL": "https://obsidian.md/",
+        "supportURL": "https://obsidian.md/help/",
+        "privacyPolicyURL": "https://obsidian.md/privacy",
+        "termsOfServiceURL": "https://obsidian.md/terms",
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png",
+        "logoDark": "./assets/icon.png",
+        "composerIconDark": "./assets/icon.png",
+        "brandColor": "#6C31E3",
+        "brandColorDark": "#A882FF"
+      },
+      "review": {
+        "commerce": false,
+        "prompts": [
+          "Search my selected vault for project notes and summarize their open tasks with links to the sources.",
+          "Create a note in my selected vault with a summary, related-note links, and a status property.",
+          "Create a reading list Base with table and card views from the books in my selected vault.",
+          "Create a Canvas with three idea cards and labeled connections in my selected vault.",
+          "Extract this public article into Markdown and save it as a note in my selected vault.",
+          "Use my supplied Knap template and JSON data to create a note in my selected vault.",
+          "Read a note using the CLI while Obsidian is closed and explain what is needed to continue."
+        ]
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Six Obsidian skills for Markdown, Bases, Canvas, the Obsidian CLI, Defuddle, and Knap, with desktop execution metadata and setup guidance for the CLI and helper tools."
+      }
+    }
+  }
+}
