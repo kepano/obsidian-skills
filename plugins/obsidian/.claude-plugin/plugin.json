@@ -1,7 +1,7 @@
 {
   "name": "obsidian",
   "version": "1.1.0",
-  "description": "Create and edit Obsidian vault files including Markdown, Bases, and Canvas. Use when working with .md, .base, or .canvas files in an Obsidian vault.",
+  "description": "Work with local Obsidian vaults using the Obsidian CLI and skills for Markdown, Bases, Canvas, web extraction, and templates.",
   "author": {
     "name": "Obsidian",
     "url": "https://obsidian.md/"

@@ -225,7 +225,7 @@ Generate 16-character lowercase hexadecimal strings (64-bit random value):
 | File preview | 300-500 | 200-400 | 450-750 |
 | Link preview | 250-400 | 100-200 | 375-600 |
 
-**CJK text sizing**: CJK characters (Chinese, Japanese, Korean) are approximately 2× wider than Latin characters. For content primarily in CJK languages, multiply the suggested width by ~1.5× to avoid cramped layouts and awkward line breaks.
+**CJK text sizing**: CJK characters (Chinese, Japanese, Korean) are wider than Latin characters. For content primarily in CJK languages, multiply the suggested width by ~1.5× to avoid cramped layouts and awkward line breaks.
 
 ## Validation Checklist
 

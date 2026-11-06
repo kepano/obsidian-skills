@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cd "$(dirname "$0")/.."
+
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <major|minor|patch|x.y.z>" >&2
   exit 1
@@ -19,10 +21,13 @@ case "$1" in
   major) new_version="$((major + 1)).0.0" ;;
   minor) new_version="$major.$((minor + 1)).0" ;;
   patch) new_version="$major.$minor.$((patch + 1))" ;;
-  [0-9]*.[0-9]*.[0-9]*) new_version="$1" ;;
   *)
-    echo "Usage: $0 <major|minor|patch|x.y.z>" >&2
-    exit 1
+    if [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+      new_version="$1"
+    else
+      echo "Usage: $0 <major|minor|patch|x.y.z>" >&2
+      exit 1
+    fi
     ;;
 esac
 

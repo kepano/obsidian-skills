@@ -35,7 +35,7 @@ obsidian create name="My Note" open overwrite
 
 Use `overwrite` only when replacing an existing file is intended.
 
-Opening is opt-in: pass `open` (or `newtab` where supported) when you want the file to open. There is no `silent` flag.
+Opening is opt-in: pass `open` to open the file, and add `newtab` to open it in a new tab. There is no `silent` flag.
 
 In `content=`, `\n` becomes a newline and `\t` a tab. Every `\n` and `\t` is converted and there's no escape, so text such as the LaTeX `\theta` or the path `C:\notes` is corrupted. Write content that contains backslashes, or is longer than about 4 KB, directly to the note's file instead.
 
@@ -62,7 +62,7 @@ Use `vault=` when the user has selected a vault. If the target is unclear and th
 
 ```bash
 obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template"
+obsidian create name="New Note" template="Template"   # a template replaces content=
 obsidian create name="New Note" content="# Hello" open  # also open in Obsidian
 obsidian append file="My Note" content="New line"
 obsidian rename path="folder/note.md" name="New name"
@@ -94,7 +94,7 @@ obsidian tasks todo format=json   # many list commands also accept format=
 
 ### Develop/test cycle
 
-After making code changes to a plugin or theme, follow this workflow:
+Turn on console capture once with `obsidian dev:debug on`, so messages from the reload are kept. After making code changes to a plugin or theme, follow this workflow:
 
 1. **Reload** the plugin to pick up changes:
    ```bash
@@ -109,9 +109,8 @@ After making code changes to a plugin or theme, follow this workflow:
    obsidian dev:screenshot
    obsidian dev:dom selector=".workspace-leaf" text
    ```
-4. **Check console output** for warnings or unexpected logs. Turn on capture with `dev:debug on` first:
+4. **Check console output** for warnings or unexpected logs:
    ```bash
-   obsidian dev:debug on
    obsidian dev:console level=error
    ```
 
