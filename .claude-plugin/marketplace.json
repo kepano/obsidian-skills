@@ -1,15 +1,16 @@
 {
   "name": "obsidian-skills",
+  "description": "Agent Skills for Obsidian Markdown, Bases, JSON Canvas, the Obsidian CLI, Defuddle, and Knap.",
   "owner": {
-    "name": "Steph Ango",
-    "url": "https://stephango.com/"
+    "name": "Obsidian",
+    "url": "https://obsidian.md/"
   },
   "plugins": [
     {
       "name": "obsidian",
       "source": "./",
       "description": "Claude Skills for Obsidian",
-      "version": "1.0.1"
+      "version": "1.1.0"
     }
   ]
 }

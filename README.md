@@ -11,6 +11,8 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 /plugin install obsidian@obsidian-skills
 ```
 
+To get new skills later, run `claude plugin update obsidian@obsidian-skills`.
+
 ### npx skills
 
 ```
