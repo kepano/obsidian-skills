@@ -166,6 +166,10 @@ Text with a footnote[^1].
 Inline footnote.^[This is inline.]
 ```
 
+## Silent Failures
+
+Some content renders differently than written without raising an error. See [PITFALLS.md](references/PITFALLS.md) for the Dataview `=` inline query collision and the Templater vs core Templates syntax mismatch.
+
 ## Complete Example
 
 ````markdown
