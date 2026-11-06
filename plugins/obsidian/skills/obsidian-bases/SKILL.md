@@ -273,7 +273,7 @@ views:
 
 ## Sorting
 
-Sort results by one or more properties. Each sort entry specifies a `property` and `direction` (`ASC` or `DESC`). Multiple sort entries are applied in order — the first entry is the primary sort key, subsequent entries break ties.
+Sort results by one or more properties. Each sort entry specifies a `property` and `direction`, which must be uppercase `ASC` or `DESC`; an entry with any other value, or a sort written as a string, is silently ignored. Multiple sort entries are applied in order — the first entry is the primary sort key, subsequent entries break ties.
 
 ```yaml
 views:

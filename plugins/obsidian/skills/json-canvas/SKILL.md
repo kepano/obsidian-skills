@@ -94,6 +94,8 @@ Nodes are objects placed on the canvas. Array order determines z-index: first no
 
 **Quote escaping pitfall**: Double quotes inside `text` content must be escaped as `\"`. For example, the text `公司的"外交官"` must be stored as `"text": "公司的\"外交官\""`. Unescaped quotes break the JSON parse and the canvas will fail to render. When generating canvas JSON programmatically, always use a JSON serializer rather than manual string concatenation.
 
+Write `.canvas` files directly. Don't create them with `obsidian create content=`, which turns every `\n` into a raw newline and breaks the JSON.
+
 ### File Nodes
 
 | Attribute | Required | Type | Description |
