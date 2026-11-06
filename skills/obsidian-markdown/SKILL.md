@@ -18,6 +18,20 @@ Create and edit valid Obsidian Flavored Markdown. Obsidian extends CommonMark an
 
 > When choosing between wikilinks and Markdown links: use `[[wikilinks]]` for notes within the vault (Obsidian tracks renames automatically) and `[text](url)` for external URLs only.
 
+## Tables
+
+Leave a blank line between a table and the line above it. Obsidian does not parse a table that sits directly under a heading or a paragraph -- it renders as plain text, even when every row has the same number of cells.
+
+````markdown
+## Shortlist
+
+| Item | Cost |
+| --- | --- |
+| A | $1 |
+````
+
+This is an Obsidian-specific deviation from GFM, and it overrides style rules that avoid blank lines around headings.
+
 ## Internal Links (Wikilinks)
 
 ```markdown
