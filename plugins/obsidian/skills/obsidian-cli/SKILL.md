@@ -7,6 +7,14 @@ description: Interact with Obsidian vaults using the Obsidian CLI to read, creat
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
+## Before using the CLI
+
+Run `obsidian help` to check availability. If the command is missing, explain how to turn on the CLI using https://help.obsidian.md/cli. The `obsidian` command ships with the Obsidian installer; don't install the unrelated npm package `obsidian-cli`. If it can't find Obsidian, ask the user to open the desktop app, then retry. In a sandboxed shell the same message can mean the sandbox blocked the CLI's local socket.
+
+The CLI exits with status 0 even when a command fails, so read its output before reporting that a command succeeded.
+
+Quote parameters for the current shell, and pass note text as literal argument data, never as executable shell syntax.
+
 ## Command reference
 
 Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
@@ -25,24 +33,30 @@ obsidian create name="My Note" content="Hello world"
 obsidian create name="My Note" open overwrite
 ```
 
+Use `overwrite` only when replacing an existing file is intended.
+
 Opening is opt-in: pass `open` (or `newtab` where supported) when you want the file to open. There is no `silent` flag.
 
-For multiline content use `\n` for newline and `\t` for tab.
+In `content=`, `\n` becomes a newline and `\t` a tab. Every `\n` and `\t` is converted and there's no escape, so text such as the LaTeX `\theta` or the path `C:\notes` is corrupted. Write content that contains backslashes, or is longer than about 4 KB, directly to the note's file instead.
+
+A dot in a file name is read as the start of an extension. When a name contains a dot, include the extension: `create name="Meeting 2026.11.06.md"`, `rename name="v1.2 notes.md"`, `move to="Archive 2026.10/Note.md"`.
 
 ## File targeting
 
 Many commands accept `file` or `path` to target a file. Without either, the active file is used.
 
-- `file=<name>` — resolves like a wikilink (name only, no path or extension needed)
+- `file=<name>` — resolves like a wikilink (name only, no path needed). `.md` is optional; other file types need their extension, e.g. `file="Projects.base"`. Aliases don't resolve.
 - `path=<path>` — exact path from vault root, e.g. `folder/note.md`
 
 ## Vault targeting
 
-Commands target the most recently focused vault by default. Use `vault=<name>` as the first parameter to target a specific vault:
+Without `vault=`, commands target the vault that contains the current directory, then the most recently focused vault. `vault=<name>` only works as the first parameter; anywhere else it's ignored:
 
 ```bash
 obsidian vault="My Vault" search query="test"
 ```
+
+Use `vault=` when the user has selected a vault. If the target is unclear and the user has several vaults, ask which one before changing files.
 
 ## Common patterns
 
@@ -63,7 +77,7 @@ obsidian tags sort=count counts
 obsidian backlinks file="My Note"
 ```
 
-Use `rename` / `move` (not filesystem `mv` or `obsidian eval`) so Obsidian can update wikilinks when that setting is on. Prefer `create` / `append` with `content=` over `eval` for writing note bodies.
+Use `rename` and `move`, not filesystem `mv` or `obsidian eval`, so Obsidian can update links to the file. If other notes link to it and Settings → Files and links → Automatically update internal links is off, Obsidian asks in a dialog and the command waits until someone answers. `delete` moves the file to the trash; don't pass `permanent` unless the user asks for it. Prefer `create` and `append` over `eval` for writing note bodies.
 
 Use `total` on list commands to get a count.
 
@@ -92,13 +106,16 @@ After making code changes to a plugin or theme, follow this workflow:
    ```
 3. **Verify visually** with a screenshot or DOM inspection:
    ```bash
-   obsidian dev:screenshot path=screenshot.png
+   obsidian dev:screenshot
    obsidian dev:dom selector=".workspace-leaf" text
    ```
-4. **Check console output** for warnings or unexpected logs:
+4. **Check console output** for warnings or unexpected logs. Turn on capture with `dev:debug on` first:
    ```bash
+   obsidian dev:debug on
    obsidian dev:console level=error
    ```
+
+`dev:screenshot` saves to a temporary file and prints its path. A relative `path=` saves inside the vault.
 
 ### Additional developer commands
 
