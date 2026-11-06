@@ -51,6 +51,9 @@ obsidian read file="My Note"
 obsidian create name="New Note" content="# Hello" template="Template"
 obsidian create name="New Note" content="# Hello" open  # also open in Obsidian
 obsidian append file="My Note" content="New line"
+obsidian rename path="folder/note.md" name="New name"
+obsidian move path="folder/note.md" to="archive/"
+obsidian delete path="folder/note.md"
 obsidian search query="search term" limit=10
 obsidian daily:read
 obsidian daily:append content="- [ ] New task"
@@ -59,6 +62,8 @@ obsidian tasks daily todo
 obsidian tags sort=count counts
 obsidian backlinks file="My Note"
 ```
+
+Use `rename` / `move` (not filesystem `mv` or `obsidian eval`) so Obsidian can update wikilinks when that setting is on. Prefer `create` / `append` with `content=` over `eval` for writing note bodies.
 
 Use `total` on list commands to get a count.
 
@@ -97,7 +102,7 @@ After making code changes to a plugin or theme, follow this workflow:
 
 ### Additional developer commands
 
-Run JavaScript in the app context:
+Run JavaScript in the app context (prefer dedicated commands like `rename`, `move`, `create`, and `append` for vault mutations):
 
 ```bash
 obsidian eval code="app.vault.getFiles().length"
