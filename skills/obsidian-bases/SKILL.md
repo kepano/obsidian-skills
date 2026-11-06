@@ -493,7 +493,7 @@ When embedded inline this way, the `this` keyword refers to the containing note,
 
 ### YAML Syntax Errors
 
-**Unquoted special characters**: Strings containing `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `` ` `` must be quoted.
+**Unquoted special characters**: Strings containing `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `%`, `@`, `` ` ``, `!` must be quoted.
 
 ```yaml
 # WRONG - colon in unquoted string
