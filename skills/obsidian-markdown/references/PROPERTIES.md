@@ -30,8 +30,10 @@ due: 2024-02-01T14:30:00
 | Checkbox | `completed: true` |
 | Date | `date: 2024-01-15` |
 | Date & Time | `due: 2024-01-15T14:30:00` |
-| List | `tags: [one, two]` or YAML list |
-| Links | `related: "[[Other Note]]"` |
+| List | `aliases: [one, two]` or YAML list |
+| Tags | `tags: [project, active]` (reserved for the `tags` property) |
+
+Links are not a separate type. Store a wikilink as a quoted Text value (`related: "[[Other Note]]"`) or as items in a List.
 
 ## Default Properties
 
