@@ -30,6 +30,10 @@ codex plugin marketplace add obsidianmd/obsidian-skills
 
 Then install Obsidian from the plugin directory in Codex or the ChatGPT desktop app.
 
+### Cursor
+
+Install Obsidian from the [Cursor Marketplace](https://cursor.com/marketplace).
+
 ### npx skills
 
 ```sh

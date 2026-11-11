@@ -11,6 +11,7 @@ fi
 files=(
   "plugins/obsidian/plugin.json"
   "plugins/obsidian/.claude-plugin/plugin.json"
+  "plugins/obsidian/.cursor-plugin/plugin.json"
   ".claude-plugin/marketplace.json"
 )
 

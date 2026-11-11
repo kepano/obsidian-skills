@@ -12,9 +12,11 @@ In Claude Code:
 
 In Codex, run `codex plugin marketplace add obsidianmd/obsidian-skills`, then install Obsidian from the plugin directory.
 
+In Cursor, install Obsidian from the [Cursor Marketplace](https://cursor.com/marketplace).
+
 ## Requirements
 
-The CLI skill runs the `obsidian` command, which needs the Obsidian desktop app installed, running, and with the CLI turned on. See https://help.obsidian.md/cli for setup. It needs a host that can run local commands, such as Claude Code, Codex, or a desktop app session on your computer.
+The CLI skill runs the `obsidian` command, which needs the Obsidian desktop app installed, running, and with the CLI turned on. See https://help.obsidian.md/cli for setup. It needs a host that can run local commands, such as Claude Code, Codex, Cursor, or a desktop app session on your computer.
 
 The Markdown, Bases, and Canvas skills only describe file formats, so they also work in chat.
 
