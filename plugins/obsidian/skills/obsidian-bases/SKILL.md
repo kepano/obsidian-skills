@@ -47,12 +47,15 @@ summaries:
 
 # Define one or more views
 views:
-  - type: table | cards | list | map
+  - type: table | cards | list | map | kanban
     name: "View Name"
     limit: 10                    # Optional: limit results
     groupBy:                     # Optional: group results
       property: property_name
       direction: ASC | DESC
+    groupOrder:                  # Optional: only these groups, in this order
+      - value_one
+      - null                     # Files with no value for the groupBy property
     sort:                        # Optional: sort results (supports multiple properties)
       - property: property_name
         direction: ASC | DESC
@@ -142,9 +145,9 @@ filters:
 | `file.mtime` | Date | Modified time |
 | `file.tags` | List | All tags in file |
 | `file.links` | List | Internal links in file |
-| `file.backlinks` | List | Files linking to this file. Slow in large vaults and does not refresh when the vault changes; prefer reversing the lookup with `file.links` |
+| `file.backlinks` | List | Files linking to this file. Slow in large vaults and doesn't refresh when the vault changes; prefer reversing the lookup with `file.links` |
 | `file.embeds` | List | Embeds in the note |
-| `file.properties` | Object | All frontmatter properties. Does not refresh when the vault changes |
+| `file.properties` | Object | All frontmatter properties. Doesn't refresh when the vault changes |
 | `file.file` | File | File object, only usable in specific functions |
 
 ### The `this` Keyword
@@ -263,7 +266,7 @@ views:
 
 ### Kanban View
 
-Requires Obsidian 1.14+. Cards are grouped into columns by the `groupBy` property. `groupOrder` sets which columns show and in what order; use `null` to include files with no value. Dragging a card to another column updates that property in the note. Only Markdown notes can be moved, except when grouping by `file.folder`, where moving a card moves the file to that folder. When grouping by a formula or by a file property other than `file.folder`, cards and columns cannot be moved and notes cannot be created from a column.
+Requires Obsidian 1.14+. Cards are grouped into columns by the `groupBy` property, which a kanban view needs. `groupOrder` sets which columns show and in what order; use `null` to include files with no value. Without `groupOrder`, every value gets a column. Dragging a card to another column updates that property in the note. Only Markdown notes can be moved, except when grouping by `file.folder`, where moving a card moves the file to that folder. When grouping by a formula or by a file property other than `file.folder`, cards and columns can't be moved and notes can't be created from a column.
 
 ```yaml
 views:
