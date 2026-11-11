@@ -10,7 +10,7 @@
     {
       "name": "obsidian",
       "source": "./plugins/obsidian",
-      "description": "Work with local Obsidian vaults using the Obsidian CLI and skills for Markdown, Bases, Canvas, web extraction, and templates."
+      "description": "Work with local Obsidian vaults using the Obsidian CLI and skills for Markdown, Bases, Canvas, Sync and Publish, web extraction, and templates."
     }
   ]
 }
