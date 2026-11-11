@@ -1,6 +1,6 @@
 {
   "name": "obsidian-skills",
-  "description": "Agent Skills for Obsidian Markdown, Bases, JSON Canvas, the Obsidian CLI, Defuddle, and Knap.",
+  "description": "Agent Skills for Obsidian Markdown, Bases, JSON Canvas, the Obsidian CLI, Obsidian Headless, Defuddle, and Knap.",
   "owner": {
     "name": "Obsidian",
     "url": "https://obsidian.md/"
