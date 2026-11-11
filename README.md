@@ -37,13 +37,13 @@ Install Obsidian from the [Cursor Marketplace](https://cursor.com/marketplace).
 ### npx skills
 
 ```sh
-npx skills add git@github.com:obsidianmd/obsidian-skills.git
+npx skills add https://github.com/obsidianmd/obsidian-skills
 ```
 
-Instead of ssh, if you prefer to use https:
+To use ssh instead, if you have a GitHub SSH key set up:
 
 ```sh
-npx skills add https://github.com/obsidianmd/obsidian-skills
+npx skills add git@github.com:obsidianmd/obsidian-skills.git
 ```
 
 ### Manually
