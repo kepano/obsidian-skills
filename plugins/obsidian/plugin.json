@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "obsidian",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Work with local Obsidian vaults using the Obsidian CLI and skills for Markdown, Bases, Canvas, Sync and Publish, web extraction, and templates.",
   "author": {
     "name": "Obsidian",
@@ -24,7 +24,7 @@
       "interface": {
         "displayName": "Obsidian",
         "shortDescription": "Work with your local vault",
-        "longDescription": "Search, read, create, and organize notes in a local Obsidian vault. Create and edit Obsidian Markdown with links, properties, and callouts. This plugin also lets you build Bases views, Canvas diagrams, extract web pages to Markdown, and render templates.\n\nThis plugin is currently desktop-only and requires Obsidian to be open and running with the CLI enabled. In the future we will add MCP so you can interact with your vault remotely and in the ChatGPT mobile app.",
+        "longDescription": "Search, read, create, and organize notes in a local Obsidian vault. Create and edit Obsidian Markdown with links, properties, and callouts. This plugin also lets you build Bases views, Canvas diagrams, extract web pages to Markdown, render templates, and sync and publish vaults with Obsidian Headless.\n\nThis plugin is currently desktop-only and requires Obsidian to be open and running with the CLI enabled. In the future we will add MCP so you can interact with your vault remotely and in the ChatGPT mobile app.",
         "category": "Productivity",
         "developerName": "Obsidian",
         "defaultPrompt": [
@@ -57,7 +57,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Six Obsidian skills for Markdown, Bases, Canvas, the Obsidian CLI, Defuddle, and Knap, with desktop execution metadata and setup guidance for the CLI and helper tools."
+        "release_notes": "Adds an Obsidian Headless skill to sync and publish vaults without the desktop app, kanban views in Bases, and fixes for Bases display names and the CLI on WSL."
       }
     }
   }
