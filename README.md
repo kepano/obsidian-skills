@@ -9,14 +9,14 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 From terminal:
 
 ```sh
-claude plugin marketplace add kepano/obsidian-skills
+claude plugin marketplace add obsidianmd/obsidian-skills
 claude plugin install obsidian@obsidian-skills
 ```
 
 From within a Claude Code session:
 
 ```sh
-/plugin marketplace add kepano/obsidian-skills
+/plugin marketplace add obsidianmd/obsidian-skills
 /plugin install obsidian@obsidian-skills
 ```
 
@@ -25,7 +25,7 @@ To get new skills later, run `claude plugin update obsidian@obsidian-skills`.
 ### Codex marketplace
 
 ```sh
-codex plugin marketplace add kepano/obsidian-skills
+codex plugin marketplace add obsidianmd/obsidian-skills
 ```
 
 Then install Obsidian from the plugin directory in Codex or the ChatGPT desktop app.
@@ -33,13 +33,13 @@ Then install Obsidian from the plugin directory in Codex or the ChatGPT desktop 
 ### npx skills
 
 ```sh
-npx skills add git@github.com:kepano/obsidian-skills.git
+npx skills add git@github.com:obsidianmd/obsidian-skills.git
 ```
 
 Instead of ssh, if you prefer to use https:
 
 ```sh
-npx skills add https://github.com/kepano/obsidian-skills
+npx skills add https://github.com/obsidianmd/obsidian-skills
 ```
 
 ### Manually
@@ -57,7 +57,7 @@ Copy the `plugins/obsidian/skills/` directory into your Codex skills path (typic
 Clone the entire repo into the OpenCode skills directory (`~/.opencode/skills/`):
 
 ```sh
-git clone https://github.com/kepano/obsidian-skills.git ~/.opencode/skills/obsidian-skills
+git clone https://github.com/obsidianmd/obsidian-skills.git ~/.opencode/skills/obsidian-skills
 ```
 
 Do not copy only the inner `skills/` folder — clone the full repo so the directory structure is `~/.opencode/skills/obsidian-skills/plugins/obsidian/skills/<skill-name>/SKILL.md`.

@@ -7,10 +7,10 @@ Skills for working with Obsidian vaults: Obsidian Markdown, Bases, Canvas, the O
 In Claude Code:
 
 ```
-/plugin install obsidian --marketplace kepano/obsidian-skills
+/plugin install obsidian --marketplace obsidianmd/obsidian-skills
 ```
 
-In Codex, run `codex plugin marketplace add kepano/obsidian-skills`, then install Obsidian from the plugin directory.
+In Codex, run `codex plugin marketplace add obsidianmd/obsidian-skills`, then install Obsidian from the plugin directory.
 
 ## Requirements
 
@@ -33,4 +33,4 @@ Web extraction uses [Defuddle](https://github.com/kepano/defuddle), which fetche
 
 This plugin contains skills only, with no MCP server, hooks, or background processes. Using it can bring vault content you ask about into the conversation, and that content is processed by the AI model you use, not only on your computer.
 
-Source: https://github.com/kepano/obsidian-skills
+Source: https://github.com/obsidianmd/obsidian-skills
