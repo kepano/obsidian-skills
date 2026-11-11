@@ -4,7 +4,7 @@
     "name": "Obsidian"
   },
   "metadata": {
-    "description": "Agent Skills for Obsidian Markdown, Bases, JSON Canvas, the Obsidian CLI, Defuddle, and Knap."
+    "description": "Agent Skills for Obsidian Markdown, Bases, JSON Canvas, the Obsidian CLI, Obsidian Headless, Defuddle, and Knap."
   },
   "plugins": [
     {
