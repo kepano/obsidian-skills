@@ -5,10 +5,6 @@ description: Create and edit Obsidian Bases (.base files) with views, filters, f
 
 # Obsidian Bases Skill
 
-## Prerequisite
-
-Bases is a **core plugin** introduced in Obsidian v1.9, but it is **not always enabled by default** — particularly in vaults that predate v1.9. If `.base` files do not render as a database, enable Bases via Settings → Core plugins → Bases.
-
 ## Workflow
 
 1. **Create the file**: Create a `.base` file in the vault with valid YAML content
@@ -16,7 +12,7 @@ Bases is a **core plugin** introduced in Obsidian v1.9, but it is **not always e
 3. **Add formulas** (optional): Define computed properties in the `formulas` section
 4. **Configure views**: Add one or more views (`table`, `cards`, `list`, or `map`) with `order` specifying which properties to display
 5. **Validate**: Verify the file is valid YAML with no syntax errors. Check that all referenced properties and formulas exist. Common issues: unquoted strings containing special YAML characters, mismatched quotes in formula expressions, referencing `formula.X` without defining `X` in `formulas`
-6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below
+6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below. If it doesn't open as a base at all, check that Bases is turned on in Settings → Core plugins
 
 ## Schema
 
@@ -37,14 +33,13 @@ formulas:
   formula_name: 'expression'
 
 # Configure display names and settings for properties.
-# IMPORTANT: keys in this section must use their fully-qualified form.
-# Frontmatter properties need the `note.` prefix or the displayName is silently ignored.
+# Note properties need the `note.` prefix here, or the setting is ignored.
 properties:
-  note.property_name:        # frontmatter property — MUST prefix with `note.`
+  note.property_name:
     displayName: "Display Name"
-  formula.formula_name:      # formula reference — already prefixed
+  formula.formula_name:
     displayName: "Formula Display Name"
-  file.ext:                  # file property — already prefixed
+  file.ext:
     displayName: "Extension"
 
 # Define custom summary formulas
@@ -134,7 +129,7 @@ filters:
 2. **File properties** - File metadata: `file.name`, `file.mtime`, etc.
 3. **Formula properties** - Computed values: `formula.my_formula`
 
-**Asymmetric prefix rule**: in `order`, `filters`, `groupBy`, and `sort`, a frontmatter property can be referenced bare (`author`) or prefixed (`note.author`). But in the top-level `properties:` configuration block (where `displayName` is set), frontmatter keys **must** use the `note.` prefix — bare keys are silently ignored and the raw field name will appear as the column header. See Troubleshooting for the symptom.
+In `order`, `filters`, `groupBy`, and `sort`, a note property can be written bare (`author`) or prefixed (`note.author`). In the top-level `properties:` section, always write `note.author`, because Obsidian ignores a bare key there and shows the raw name as the column header.
 
 ### File Properties Reference
 
@@ -545,7 +540,7 @@ formulas:
 'if(due_date, (date(due_date) - today()).days, "")'
 ```
 
-**`displayName` ignored / column shows raw field name**: in the `properties:` configuration block, frontmatter keys must be prefixed with `note.`. Bare keys are silently ignored.
+**`displayName` ignored, column shows the raw name**: prefix note properties with `note.` in the `properties:` section.
 
 ```yaml
 # WRONG - displayName ignored, column header shows "status"
@@ -559,9 +554,7 @@ properties:
     displayName: Status
 ```
 
-This asymmetry trips users up because `order`, `filters`, and `groupBy` all accept the bare form. The `properties:` block is the exception.
-
-**Empty `displayName` does not hide a table header**: `displayName: ""` falls back to the property name, just like omitting `displayName`. For example, `formula.status_icon` displays `status_icon`. Use a non-empty name such as `displayName: "Status"` to customize the header.
+**Empty `displayName` doesn't hide a header**: `displayName: ""` falls back to the property name, the same as leaving it out, so `formula.status_icon` shows `status_icon`. Use a non-empty name such as `displayName: "Status"`.
 
 **Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
 

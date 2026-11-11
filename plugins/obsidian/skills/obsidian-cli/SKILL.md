@@ -11,6 +11,8 @@ Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Ob
 
 Run `obsidian help` to check availability. If the command is missing, explain how to turn on the CLI using https://help.obsidian.md/cli. The `obsidian` command ships with the Obsidian installer; don't install the unrelated npm package `obsidian-cli`. If it can't find Obsidian, ask the user to open the desktop app, then retry. In a sandboxed shell the same message can mean the sandbox blocked the CLI's local socket.
 
+On WSL, run `Obsidian.com` from the Windows install folder, not `Obsidian.exe`. `Obsidian.com` is the console wrapper that prints the output; `Obsidian.exe` exits without printing anything.
+
 The CLI exits with status 0 even when a command fails, so read its output before reporting that a command succeeded.
 
 Quote parameters for the current shell, and pass note text as literal argument data, never as executable shell syntax.
