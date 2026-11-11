@@ -12,7 +12,7 @@ description: Create and edit Obsidian Bases (.base files) with views, filters, f
 3. **Add formulas** (optional): Define computed properties in the `formulas` section
 4. **Configure views**: Add one or more views (`table`, `cards`, `list`, `map`, or `kanban`) with `order` specifying which properties to display
 5. **Validate**: Verify the file is valid YAML with no syntax errors. Check that all referenced properties and formulas exist. Common issues: unquoted strings containing special YAML characters, mismatched quotes in formula expressions, referencing `formula.X` without defining `X` in `formulas`
-6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below
+6. **Test in Obsidian**: Open the `.base` file in Obsidian to confirm the view renders correctly. If it shows a YAML error, check quoting rules below. If it doesn't open as a base at all, check that Bases is turned on in Settings → Core plugins
 
 ## Schema
 
@@ -32,9 +32,10 @@ filters:
 formulas:
   formula_name: 'expression'
 
-# Configure display names and settings for properties
+# Configure display names and settings for properties.
+# Note properties need the `note.` prefix here, or the setting is ignored.
 properties:
-  property_name:
+  note.property_name:
     displayName: "Display Name"
   formula.formula_name:
     displayName: "Formula Display Name"
@@ -130,6 +131,8 @@ filters:
 1. **Note properties** - From frontmatter: `note.author` or just `author`
 2. **File properties** - File metadata: `file.name`, `file.mtime`, etc.
 3. **Formula properties** - Computed values: `formula.my_formula`
+
+In `order`, `filters`, `groupBy`, and `sort`, a note property can be written bare (`author`) or prefixed (`note.author`). In the top-level `properties:` section, always write `note.author`, because Obsidian ignores a bare key there and shows the raw name as the column header.
 
 ### File Properties Reference
 
@@ -360,7 +363,7 @@ formulas:
   priority_label: 'if(priority == 1, "🔴 High", if(priority == 2, "🟡 Medium", "🟢 Low"))'
 
 properties:
-  status:
+  note.status:
     displayName: Status
   formula.days_until_due:
     displayName: "Days Until Due"
@@ -414,10 +417,10 @@ formulas:
   year_read: 'if(finished_date, date(finished_date).year, "")'
 
 properties:
-  author:
+  note.author:
     displayName: Author
   formula.status_icon:
-    displayName: ""
+    displayName: "Status"
   formula.reading_time:
     displayName: "Est. Time"
 
@@ -560,6 +563,22 @@ formulas:
 # CORRECT - guard with if()
 'if(due_date, (date(due_date) - today()).days, "")'
 ```
+
+**`displayName` ignored, column shows the raw name**: prefix note properties with `note.` in the `properties:` section.
+
+```yaml
+# WRONG - displayName ignored, column header shows "status"
+properties:
+  status:
+    displayName: Status
+
+# CORRECT - column header shows "Status"
+properties:
+  note.status:
+    displayName: Status
+```
+
+**Empty `displayName` doesn't hide a header**: `displayName: ""` falls back to the property name, the same as leaving it out, so `formula.status_icon` shows `status_icon`. Use a non-empty name such as `displayName: "Status"`.
 
 **Referencing undefined formulas**: Ensure every `formula.X` in `order` or `properties` has a matching entry in `formulas`.
 
