@@ -7,7 +7,7 @@ description: Render Markdown from templates and structured data using Knap CLI. 
 
 Use Knap CLI to render Markdown templates with variables, filters, and logic.
 
-If not installed: `npm install -g knap` (requires Node.js 20 or later). Alternatively, use `npx knap`.
+Check availability with `knap --help`. If it is missing, explain that Knap requires Node.js 20 or later and offer installation with `npm install -g knap` or execution with `npx knap`. Do not claim a template was rendered if the tool is unavailable or returns an error.
 
 Run `knap --help` for available commands and options. Discover the language through the CLI's offline reference:
 
